@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="WayneLee" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+  <meta name="description" content="CSS介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同 一个基本的盒模型，包括content(width/height)，padding，border，margin  有两种盒子模型，IE盒模型和W3C标准盒模型，两者的区别：W3C标准盒模型，宽高是只有内容content，没有padding和border的， 而IE盒模型，宽高不光有content，还包含了padding和borde">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试题整理（CSS篇）">
+<meta property="og:url" content="http://yoursite.com/2018/12/11/前端面试题整理（CSS篇）/index.html">
+<meta property="og:site_name" content="WayneLee">
+<meta property="og:description" content="CSS介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同 一个基本的盒模型，包括content(width/height)，padding，border，margin  有两种盒子模型，IE盒模型和W3C标准盒模型，两者的区别：W3C标准盒模型，宽高是只有内容content，没有padding和border的， 而IE盒模型，宽高不光有content，还包含了padding和borde">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-11T04:28:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端面试题整理（CSS篇）">
+<meta name="twitter:description" content="CSS介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同 一个基本的盒模型，包括content(width/height)，padding，border，margin  有两种盒子模型，IE盒模型和W3C标准盒模型，两者的区别：W3C标准盒模型，宽高是只有内容content，没有padding和border的， 而IE盒模型，宽高不光有content，还包含了padding和borde">
+
+<link rel="canonical" href="http://yoursite.com/2018/12/11/前端面试题整理（CSS篇）/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>前端面试题整理（CSS篇） | WayneLee</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+  <!-- 爆炸红心效果 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script>
+<!-- 添加动态线条背景 -->
+
+<script type="text/javascript" color="0,0,0" opacity='1.0'  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+   <a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WayneLee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/11/前端面试题整理（CSS篇）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WayneLee">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前端面试题整理（CSS篇）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-11 12:28:57" itemprop="dateCreated datePublished" datetime="2018-12-11T12:28:57+08:00">2018-12-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h4 id="介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同"><a href="#介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同" class="headerlink" title="介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同"></a>介绍一下标准的<code>css</code>的盒子模型？低版本IE的盒子模型有什么不同</h4><p> 一个基本的盒模型，包括<code>content(width/height)</code>，<code>padding</code>，<code>border</code>，<code>margin</code> </p><p> 有两种盒子模型，<code>IE</code>盒模型和<code>W3C</code>标准盒模型，</p><p>两者的区别：<code>W3C</code>标准盒模型，宽高是只有内容<code>content</code>，没有<code>padding</code>和<code>border</code>的， 而<code>IE</code>盒模型，宽高不光有<code>content</code>，还包含了<code>padding</code>和<code>border</code></p><a id="more"></a>
+
+
+<p>怎么设置<code>w3c</code>盒模型和<code>ie</code>盒模型？           </p>
+<p><code>box-sizing</code>用来控制元素的盒子模型的解析模式 </p>
+<p><code>box-sizing: content-box</code>;　　// <code>W3C</code>标准盒模型（默认情况下）</p>
+<p><code>box-sizing: border-box</code>;　　// <code>IE</code>盒模型</p>
+<p>（这个也比较好记，标准的就是只有内容，就是<code>content</code>，而<code>IE</code>就是有<code>border</code>的）</p>
+<h4 id="display-none与visibility-hidden的区别？"><a href="#display-none与visibility-hidden的区别？" class="headerlink" title="display:none与visibility:hidden的区别？"></a><code>display:none</code>与<code>visibility:hidden</code>的区别？</h4><p><code>display</code>: 隐藏对应的元素但不挤占该元素原来的空间。 </p>
+<p><code>visibility</code>: 隐藏对应的元素并且挤占该元素原来的空间。 </p>
+<h4 id="为什么要初始化样式-？"><a href="#为什么要初始化样式-？" class="headerlink" title="为什么要初始化样式 ？"></a>为什么要初始化样式 ？</h4><p> 由于浏览器兼容的问题，不同的浏览器对标签的默认样式值不同，若不初始化会造成不同浏览器之间的显示差异但是初始化<code>CSS</code>会对搜索引擎优化造成小影响。</p>
+<h4 id="CSS选择符有哪些？"><a href="#CSS选择符有哪些？" class="headerlink" title="CSS选择符有哪些？"></a>CSS选择符有哪些？</h4><ul>
+<li><code>id</code>选择器(<code>#myid</code>)</li>
+<li>类选择器(<code>.myclassName</code>)</li>
+<li>标签选择器(<code>div,h1,p</code>)</li>
+<li>子代选择器(<code>ul&gt;li</code>)</li>
+<li>后代选择器(<code>li a</code>)</li>
+<li>多元素选择器(<code>div,p</code>)同时选择多种元素</li>
+<li>相邻选择器(<code>div+p</code>) 选择相邻兄弟的第一个元素</li>
+<li>兄弟选择器(<code>div~p</code>)选择相邻的所有兄弟<code>p</code>元素</li>
+<li>通配符选择器(<code>*</code>)</li>
+<li>属性选择器(<code>a[rel=&quot;external&quot;]</code>)</li>
+<li>伪类选择器(<code>a:hover,li:nth-child</code>)</li>
+</ul>
+<h4 id="为什么需要清浮动？清浮动的方式"><a href="#为什么需要清浮动？清浮动的方式" class="headerlink" title="为什么需要清浮动？清浮动的方式"></a>为什么需要清浮动？清浮动的方式</h4><p>由于浮动元素不再占用原文档流的位置，所以它会对后面的元素排版产生影响，为了解决这些问题，就需要在该元素中清除浮动，准确地说，并不是清除浮动，而是<strong>清除浮动后造成的影响</strong>。</p>
+<p>清浮动是为了清除使用浮动元素产生的影响。浮动的元素，高度会塌陷，而高度的塌陷使页面后面的布局不能正常显示</p>
+<ul>
+<li>父级<code>div</code>定义<code>height</code></li>
+<li>在浮动元素后面添加<code>class</code>为<code>clear</code>的空<code>div</code>元素，给这个div设置样式<code>.clear{clear:both}</code></li>
+<li>给父容器添加<code>overflow:hidden</code>或者<code>auto</code>样式</li>
+<li>给父容器添加<code>clearfix</code>的<code>class</code>，用伪类<code>clearfix:after</code>；来这个样式。清除浮动</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span>&#123;</span><br><span class="line">    <span class="attribute">zoom</span>:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.clear</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">'.'</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">    <span class="attribute">display</span>:block;</span><br><span class="line">    <span class="attribute">visibility</span>:hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="什么是外边距合并"><a href="#什么是外边距合并" class="headerlink" title="什么是外边距合并"></a>什么是外边距合并</h4><p>外边距合并指的是，当两个垂直外边距相遇时，他们将形成一个外边距。合并后的外边距的高度等于两个发生合并的外边距的高度中较大者 </p>
+<h4 id="如何获取盒子的宽高？"><a href="#如何获取盒子的宽高？" class="headerlink" title="如何获取盒子的宽高？"></a>如何获取盒子的宽高？</h4><p> 我们用得最多的就是<code>dom.offsetWidth  dom.offsetHeight</code>，这个包含了<code>width/height</code>，<code>padding</code>和<code>border</code>，是项目中最常用的，兼容性也最好，记住这个就行了 </p>
+<h4 id="列举一些常用的伪类或伪元素？"><a href="#列举一些常用的伪类或伪元素？" class="headerlink" title="列举一些常用的伪类或伪元素？"></a>列举一些常用的伪类或伪元素？</h4><p><strong>伪类</strong>：（大部分都是<code>CSS3</code>里新增的）</p>
+<p>: <code>hover</code> 鼠标hover</p>
+<p>: <code>nth-child(n)</code>  选中父元素下的第<code>n</code>个子元素</p>
+<p>: <code>not()</code>  不是什么什么</p>
+<p>: <code>first-child</code>  第一个子元素</p>
+<p>: <code>last-child</code>  最后一个子元素</p>
+<p>: <code>checked</code>  单选框或复选框被选中的</p>
+<p><strong>伪元素</strong>：</p>
+<p>:: <code>before</code></p>
+<p>:: <code>after</code></p>
+<h4 id="选择器权重计算比较？"><a href="#选择器权重计算比较？" class="headerlink" title="选择器权重计算比较？"></a>选择器权重计算比较？</h4><p>一般讨论四种选择器：</p>
+<p>元素或伪元素(::)  （x，x，x，0）</p>
+<p>class选择符或伪类(:)   （x，x，0，x）</p>
+<p>id选择符  （x，0，x，x）</p>
+<p>标签内选择符  （0，x，x，x）</p>
+<p>通常计算方法就是每出现一个，就在对应的权位上加<code>1</code>，不可进位，两个选择器比较权重就是从首位开始比较，数字相同的话就比较下一个。</p>
+<p><code>!important</code>权位最高，不在讨论范围内，可以理解为  （1，x，x，x，x）</p>
+<p>相同都有<code>!important</code>，就看谁在后面</p>
+<h4 id="如何居中一个div？"><a href="#如何居中一个div？" class="headerlink" title="如何居中一个div？"></a>如何居中一个div？</h4><p><strong>水平居中：利用margin属性</strong></p>
+<p> 给 <code>div</code> 设置一个宽高，然后添加 <code>margin:0 auto</code> 属性</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123; </span><br><span class="line"><span class="attribute">width</span>:<span class="number">200px</span>; </span><br><span class="line"><span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">margin:0 auto;//上下为0 左右自适应</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>水平垂直居中</strong></p>
+<p>让left和top都是50%，这在水平方向上让div的最左与屏幕的最左相距50%，垂直方向上一样，所以再用transform向左（上）平移它自己宽度（高度）的50%，也就达到居中效果了 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">300px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>:red;</span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>:-<span class="number">100px</span> <span class="number">0</span> <span class="number">0</span> -<span class="number">150px</span>;<span class="comment">/*或者下面一样效果*/</span></span><br><span class="line">    <span class="attribute">transform</span>:<span class="built_in">translate</span>(-<span class="number">50%</span>,-<span class="number">50%</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>使用flex弹性盒子</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;</span><br><span class="line"><span class="selector-tag">align-items</span>: <span class="selector-tag">center</span>; <span class="comment">/*垂直方向居中*/</span></span><br><span class="line"><span class="selector-tag">justify-content</span>: <span class="selector-tag">center</span>;  <span class="comment">/*水平方向居中*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="CSS中定位的方式有哪些？position属性的值有哪些？"><a href="#CSS中定位的方式有哪些？position属性的值有哪些？" class="headerlink" title="CSS中定位的方式有哪些？position属性的值有哪些？"></a>CSS中定位的方式有哪些？position属性的值有哪些？</h4><ul>
+<li>默认值：initial（浏览器默认值）</li>
+<li>继承父级元素的定位机制：inherit</li>
+<li>默认：static</li>
+<li>相对定位：relative</li>
+<li>绝对定位：absolute（注意<code>z-index</code>）</li>
+<li>固定定位：fixed</li>
+<li><p>粘性定位：sticky该定位基于用户滚动的位置。</p>
+</li>
+<li><p><strong>initial</strong>：设置该属性为浏览器默认值</p>
+</li>
+<li><p><strong>inherit</strong> ：规定应该从父元素继承 position 属性的值。</p>
+</li>
+</ul>
+<ul>
+<li><p>static</p>
+<p> ：默认值。</p>
+<ul>
+<li>没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。 </li>
+</ul>
+</li>
+<li><p>relative</p>
+<p> ：生成相对定位的元素，相对于其正常位置进行定位。</p>
+<ul>
+<li>因此，“left:20” 会向元素的 LEFT 位置添加 20 像素。</li>
+</ul>
+</li>
+<li><p>absolute</p>
+<p>： 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。</p>
+<ul>
+<li>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</li>
+</ul>
+</li>
+<li><p>fixed</p>
+<p> ：生成绝对定位的元素，相对于浏览器窗口进行定位。</p>
+<ul>
+<li>元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。fixed旧版本IE不支持</li>
+</ul>
+</li>
+<li><p>sticky</p>
+<ul>
+<li>粘性定位，该定位基于用户滚动的位置。（特定阈值指的是 top, right, bottom 或 left 之一）<ul>
+<li>它的行为就像 position:relative; 而当页面滚动超出目标区域时，</li>
+<li>它的表现就像 position:fixed;，它会固定在目标位置。</li>
+<li>注意: Internet Explorer, Edge 15 及更早 IE 版本不支</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="display有哪些值？说明他们的作用"><a href="#display有哪些值？说明他们的作用" class="headerlink" title="display有哪些值？说明他们的作用"></a>display有哪些值？说明他们的作用</h4><p><strong>display 显示状态有:</strong></p>
+<p><strong>none</strong> 隐藏，此元素不会被显示。</p>
+<p><strong>block</strong> 块显示；此元素将显示为块级元素，此元素前后会带有换行符。</p>
+<p><strong>inline</strong> 内嵌 ，默认。此元素会被显示为内联元素，元素前后没有换行符。</p>
+<p><strong>table</strong> 表格显示，此元素会作为块级表格来显示（类似 <code></code>），表格前后带有换行符。</p>
+<p><strong>inline-block</strong>：元素既具有 block 元素可以设置宽高的特性，同时又具有 inline 元素默认不换行的特性。</p>
+<p><strong>list-item</strong>:象块类型元素一样显示，并添加样式列表标记。</p>
+<p><strong>inherit</strong> 规定应该从父元素继承 display 属性的值</p>
+<h4 id="CSS3有哪些新特性？"><a href="#CSS3有哪些新特性？" class="headerlink" title="CSS3有哪些新特性？"></a>CSS3有哪些新特性？</h4><ul>
+<li>CSS3实现圆角（border-radius），阴影（box-shadow），</li>
+<li>对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）</li>
+<li>transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);// 旋转,缩放,定位,倾斜</li>
+<li>增加了更多的CSS选择器  多背景 rgba </li>
+<li>在CSS3中唯一引入的伪元素是 <code>::selection</code>.</li>
+<li>媒体查询，多栏布局</li>
+<li>border-image</li>
+</ul>
+<h4 id="CSS3新增伪类有哪些？"><a href="#CSS3新增伪类有哪些？" class="headerlink" title="CSS3新增伪类有哪些？"></a>CSS3新增伪类有哪些？</h4><p>CSS3新增伪类举例：</p>
+<ul>
+<li>p:first-of-type 选择属于其父元素的首个<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:last-of-type 选择属于其父元素的最后<code>&lt;p&gt;</code>元素的每个<code>&lt;p&gt;</code>元素。</li>
+<li>p:only-of-type 选择属于其父元素唯一的 <code>&lt;p&gt;</code> 元素的每个 <code>&lt;p&gt;</code> 元素。</li>
+<li>p:only-child  选择属于其父元素的唯一子元素的每个 <code>&lt;p&gt;</code> 元素。</li>
+<li>p:nth-child(2) 选择属于其父元素的第二个子元素的每个 <code>&lt;p&gt;</code> 元素。</li>
+<li>:enabled、:disabled 控制表单控件的禁用状态。</li>
+<li>:checked，单选框或复选框被选中。</li>
+<li>:after 在元素之前添加内容,也可以用来做清除浮动。</li>
+<li>:before 在元素之后添加内容</li>
+<li>:enabled</li>
+<li>:disabled 控制表单控件的禁用状态。</li>
+<li>:checked 单选框或复选框被选中。</li>
+</ul>
+<h4 id="margin的上下左右四个数值？"><a href="#margin的上下左右四个数值？" class="headerlink" title="margin的上下左右四个数值？"></a>margin的上下左右四个数值？</h4><p>margin属性的四个值                                                   <strong>上  右  下  左</strong></p>
+<p>如果有三个值，那左右相同（左取的是第二个值）   <strong>上     左右     下</strong></p>
+<p>如果有两个值，那上下相同，左右相同                      <strong>上下   左右</strong></p>
+<p>如果有一个值，那四面相同                                          <strong>上右下左</strong></p>
+<h4 id="对line-height是如何理解的？"><a href="#对line-height是如何理解的？" class="headerlink" title="对line-height是如何理解的？"></a>对line-height是如何理解的？</h4><p>基线位置是由字体确定的，css的line-height指的是一行字的高度，包含了字间距，实际上就是下一行的基线到上一行的基线距离。</p>
+<p>line-height的值跟height的值一样，字体就会垂直居中;</p>
+<h4 id="解释下CSS-sprites是什么？"><a href="#解释下CSS-sprites是什么？" class="headerlink" title="解释下CSS sprites是什么？"></a>解释下CSS sprites是什么？</h4><p>CSS Sprites 其实就是把网页中一些背景图片整合到一张图片文件中， 将多个⼩图⽚拼接到⼀个图⽚中。通过 background-position 和元素尺⼨调节需要显示的背景图案。 </p>
+<p>再利用 CSS 的”background-image”，“background-repeat”，“background-position” 的组合进行背景定位，background-position 可以用数字能精确的定位出背景图片的位置。</p>
+<p>这样可以减少很多图片请求的开销，因为请求耗时比较长；</p>
+<h4 id="抽离样式模块怎么写，说出思路，有无实践经验？"><a href="#抽离样式模块怎么写，说出思路，有无实践经验？" class="headerlink" title="抽离样式模块怎么写，说出思路，有无实践经验？"></a>抽离样式模块怎么写，说出思路，有无实践经验？</h4><p>首一个成熟的网站需要有统一的风格，一致的用户体验，比如：网站的配色，字体的大小，交互行为一致等应该在设计之初就得到确定，而不是由个体开发者来自由的定义。</p>
+<p>网站同时应存在可以提取出来公用的样式部分。那么我们就可以把网站的字体大小，公共控制，共用模块的样式都抽离出来，作为单独的模块来处理。</p>
+<p>这样，团队中的每个人如果需要这样的样式，都可以用这种公共样式，以此提高代码的重用率。</p>
+<p>我认为一个项目的CSS可以拆分成2部分：公共CSS和业务CSS。</p>
+<p>我们在项目中抽出的这部分可以模块化的CSS就可以归类为公共CSS。</p>
+<p>这部分的代码命名不应涉及到具体的业务，只应对其在模块中负责的具体逻辑负责。</p>
+<p>对于业务CSS，我们需要有统一的命名。如一个网站中有如下几个栏目：文件，社区，社交关系等，在项目规划时，就需要把这块模块的名称定好，</p>
+<p>比如 文件-files,社区-cmty(community简写)，这样开发人员在写样式时，就可以使用公用的前缀，.cmty-cmtydetail，而不会根据各自的想法，</p>
+<p>写成.community或是.commu，这一点对于统一风格是尽为重要的，也方便备用人员接手工作。</p>
+<h4 id="base64有什么好处，base64有什么缺点？"><a href="#base64有什么好处，base64有什么缺点？" class="headerlink" title="base64有什么好处，base64有什么缺点？"></a>base64有什么好处，base64有什么缺点？</h4><p>什么时候用，一般移动端的大的背景图会用base64，而且图片体积比较大的时候才会用base64；</p>
+<p>如果图片比较小，那么base64编码后的字符串会比图片本身还大，只有图片打到几百K的时候，</p>
+<p>用base64编码会大大缩小图片的体积；</p>
+<p><strong>优点</strong>：能够减小大图片的尺寸，同时还能够减少HTTP请求数量；HTTP请求是非常耗费服务器资源的；</p>
+<h4 id="JS为什么会放在下面，CSS为什么放在上面"><a href="#JS为什么会放在下面，CSS为什么放在上面" class="headerlink" title="JS为什么会放在下面，CSS为什么放在上面"></a>JS为什么会放在下面，CSS为什么放在上面</h4><p>浏览器从上到下依次解析html文档。</p>
+<p>将 css 文件放到头部， css 文件可以先加载。避免先加载 body 内容，导致页面一开始样式错乱，然后闪烁。</p>
+<p>将 javascript 文件放到底部是因为：若</p>
+<p>将 javascript 文件放到 head 里面，就意味着必须等到所有的 javascript 代码都被 下载、解析和执行完成 之后才开始呈现页面内容。</p>
+<p>这样就会造成呈现页面时出现明显的延迟，窗口一片空白。</p>
+<p>为避免这样的问题一般将全部 javascript 文件放到 body 元素中页面内容的后面。</p>
+<h4 id="rgba-和opacity的透明效果有什么不同？"><a href="#rgba-和opacity的透明效果有什么不同？" class="headerlink" title="rgba()和opacity的透明效果有什么不同？"></a>rgba()和opacity的透明效果有什么不同？</h4><ul>
+<li>rgba() 和 opacity 都能实现透明效果，但最⼤的不同是 opacity 作⽤于元素，以及元素内的所有内容的透明度，</li>
+<li>⽽ rgba() 只作⽤于元素的颜⾊或其背景⾊。（设置 rgba 透明的元素的⼦元素不会继承透明效果！</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2018/09/10/src与href的区别/" rel="next" title="src与href的区别">
+                  <i class="fa fa-chevron-left"></i> src与href的区别
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/01/13/vue常见面试题总结/" rel="prev" title="Vue常见面试题总结">
+                  Vue常见面试题总结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS"><span class="nav-number">1.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">介绍一下标准的css的盒子模型？低版本IE的盒子模型有什么不同</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#display-none与visibility-hidden的区别？"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">display:none与visibility:hidden的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要初始化样式-？"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">为什么要初始化样式 ？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS选择符有哪些？"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">CSS选择符有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要清浮动？清浮动的方式"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">为什么需要清浮动？清浮动的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是外边距合并"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">什么是外边距合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何获取盒子的宽高？"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">如何获取盒子的宽高？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列举一些常用的伪类或伪元素？"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">列举一些常用的伪类或伪元素？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择器权重计算比较？"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">选择器权重计算比较？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何居中一个div？"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">如何居中一个div？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS中定位的方式有哪些？position属性的值有哪些？"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">CSS中定位的方式有哪些？position属性的值有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#display有哪些值？说明他们的作用"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">display有哪些值？说明他们的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3有哪些新特性？"><span class="nav-number">1.0.0.13.</span> <span class="nav-text">CSS3有哪些新特性？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS3新增伪类有哪些？"><span class="nav-number">1.0.0.14.</span> <span class="nav-text">CSS3新增伪类有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#margin的上下左右四个数值？"><span class="nav-number">1.0.0.15.</span> <span class="nav-text">margin的上下左右四个数值？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对line-height是如何理解的？"><span class="nav-number">1.0.0.16.</span> <span class="nav-text">对line-height是如何理解的？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解释下CSS-sprites是什么？"><span class="nav-number">1.0.0.17.</span> <span class="nav-text">解释下CSS sprites是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽离样式模块怎么写，说出思路，有无实践经验？"><span class="nav-number">1.0.0.18.</span> <span class="nav-text">抽离样式模块怎么写，说出思路，有无实践经验？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#base64有什么好处，base64有什么缺点？"><span class="nav-number">1.0.0.19.</span> <span class="nav-text">base64有什么好处，base64有什么缺点？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JS为什么会放在下面，CSS为什么放在上面"><span class="nav-number">1.0.0.20.</span> <span class="nav-text">JS为什么会放在下面，CSS为什么放在上面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rgba-和opacity的透明效果有什么不同？"><span class="nav-number">1.0.0.21.</span> <span class="nav-text">rgba()和opacity的透明效果有什么不同？</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="WayneLee"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">WayneLee</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail &amp;rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WayneLee</span>
+</div>
+  <!--<div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  -->
+<!--
+  <span class="post-meta-divider">|</span>
+-->
+  <!-- <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div> 
+  -->
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/11/2018 00:00:00");//
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":250,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
