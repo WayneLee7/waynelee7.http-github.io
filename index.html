@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <link rel="alternate" href="/atom.xml" title="WayneLee" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="李凤伟的小站" type="application/atom+xml">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -67,12 +67,12 @@
 </style>
 
   <meta property="og:type" content="website">
-<meta property="og:title" content="WayneLee">
+<meta property="og:title" content="李凤伟的小站">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="WayneLee">
+<meta property="og:site_name" content="李凤伟的小站">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WayneLee">
+<meta name="twitter:title" content="李凤伟的小站">
 
 <link rel="canonical" href="http://yoursite.com/">
 
@@ -88,7 +88,7 @@
   };
 </script>
 
-  <title>WayneLee</title>
+  <title>李凤伟的小站</title>
   
 
 
@@ -143,7 +143,7 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WayneLee</span>
+        <span class="site-title">李凤伟的小站</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -217,7 +217,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -294,6 +294,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY1-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/27/DAY1-5/" class="post-title-link" itemprop="url">DAY1-5_函数（下）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-27 13:49:59" itemprop="dateCreated datePublished" datetime="2021-09-27T13:49:59+08:00">2021-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-11 20:15:14" itemprop="dateModified" datetime="2021-10-11T20:15:14+08:00">2021-10-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/千锋/" itemprop="url" rel="index">
+                    <span itemprop="name">千锋</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="函数（下）"><a href="#函数（下）" class="headerlink" title="函数（下）"></a>函数（下）</h1><h2 id="作用域（重点）"><a href="#作用域（重点）" class="headerlink" title="作用域（重点）"></a>作用域（重点）</h2><ul>
+<li>什么是作用域，就是一个变量可以生效的范围</li>
+<li>变量不是在所有地方都可以使用的，而这个变量的使用范围就是作用域</li>
+</ul><h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><ul>
+<li><p>全局作用域是最大的作用域</p>
+</li>
+<li><p>在全局作用域中定义的变量可以在任何地方使用</p>
+</li>
+<li><p>页面打开的时候，浏览器会自动给我们生成一个全局作用域 window</p>
+</li>
+<li><p>这个作用域会一直存在，直到页面关闭就销毁了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面两个变量都是存在在全局作用域下面的，都是可以在任意地方使用的</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">200</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/27/DAY1-5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY1-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -303,7 +399,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -397,7 +493,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -500,7 +596,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -584,102 +680,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY1-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WayneLee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/27/DAY1-5/" class="post-title-link" itemprop="url">DAY1-5_函数（下）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-27 13:49:59" itemprop="dateCreated datePublished" datetime="2021-09-27T13:49:59+08:00">2021-09-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-11 20:15:14" itemprop="dateModified" datetime="2021-10-11T20:15:14+08:00">2021-10-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/千锋/" itemprop="url" rel="index">
-                    <span itemprop="name">千锋</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="函数（下）"><a href="#函数（下）" class="headerlink" title="函数（下）"></a>函数（下）</h1><h2 id="作用域（重点）"><a href="#作用域（重点）" class="headerlink" title="作用域（重点）"></a>作用域（重点）</h2><ul>
-<li>什么是作用域，就是一个变量可以生效的范围</li>
-<li>变量不是在所有地方都可以使用的，而这个变量的使用范围就是作用域</li>
-</ul><h3 id="全局作用域"><a href="#全局作用域" class="headerlink" title="全局作用域"></a>全局作用域</h3><ul>
-<li><p>全局作用域是最大的作用域</p>
-</li>
-<li><p>在全局作用域中定义的变量可以在任何地方使用</p>
-</li>
-<li><p>页面打开的时候，浏览器会自动给我们生成一个全局作用域 window</p>
-</li>
-<li><p>这个作用域会一直存在，直到页面关闭就销毁了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面两个变量都是存在在全局作用域下面的，都是可以在任意地方使用的</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">200</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/27/DAY1-5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY2-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -689,7 +689,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -771,6 +771,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY2-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/27/DAY2-3/" class="post-title-link" itemprop="url">DAY2-3_Math 和 Date</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-27 13:49:59" itemprop="dateCreated datePublished" datetime="2021-09-27T13:49:59+08:00">2021-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-11 20:15:41" itemprop="dateModified" datetime="2021-10-11T20:15:41+08:00">2021-10-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/千锋/" itemprop="url" rel="index">
+                    <span itemprop="name">千锋</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Math-和-Date"><a href="#Math-和-Date" class="headerlink" title="Math 和 Date"></a>Math 和 Date</h1><ul>
+<li>Math 是 js 的一个内置对象，提供了一堆的方法帮助我们操作 <strong>数字</strong></li>
+<li>Date 是 js 的一个内置对象，提供了一堆的方法帮助我们操作 <strong>时间</strong></li>
+</ul><h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><ul>
+<li>没有什么多余的东西，就是一堆的方法来操作数字</li>
+</ul><h3 id="random"><a href="#random" class="headerlink" title="random"></a>random</h3><ul>
+<li><p><code>Math.random()</code> 这个方法是用来生成一个 <code>0 ~ 1</code> 之间的随机数</p>
+</li>
+<li><p>每次执行生成的数字都不一样，但是一定是 <code>0 ~ 1</code> 之间的</p>
+</li>
+<li><p>生成的数字包含 0 ，但是不包含 1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="built_in">Math</span>.random()</span><br><span class="line"><span class="built_in">console</span>.log(num) <span class="comment">// 得到一个随机数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/27/DAY2-3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY2-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -780,7 +876,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -883,7 +979,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -965,102 +1061,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY2-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WayneLee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/27/DAY2-3/" class="post-title-link" itemprop="url">DAY2-3_Math 和 Date</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-27 13:49:59" itemprop="dateCreated datePublished" datetime="2021-09-27T13:49:59+08:00">2021-09-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-11 20:15:41" itemprop="dateModified" datetime="2021-10-11T20:15:41+08:00">2021-10-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/千锋/" itemprop="url" rel="index">
-                    <span itemprop="name">千锋</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Math-和-Date"><a href="#Math-和-Date" class="headerlink" title="Math 和 Date"></a>Math 和 Date</h1><ul>
-<li>Math 是 js 的一个内置对象，提供了一堆的方法帮助我们操作 <strong>数字</strong></li>
-<li>Date 是 js 的一个内置对象，提供了一堆的方法帮助我们操作 <strong>时间</strong></li>
-</ul><h2 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h2><ul>
-<li>没有什么多余的东西，就是一堆的方法来操作数字</li>
-</ul><h3 id="random"><a href="#random" class="headerlink" title="random"></a>random</h3><ul>
-<li><p><code>Math.random()</code> 这个方法是用来生成一个 <code>0 ~ 1</code> 之间的随机数</p>
-</li>
-<li><p>每次执行生成的数字都不一样，但是一定是 <code>0 ~ 1</code> 之间的</p>
-</li>
-<li><p>生成的数字包含 0 ，但是不包含 1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="built_in">Math</span>.random()</span><br><span class="line"><span class="built_in">console</span>.log(num) <span class="comment">// 得到一个随机数</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/27/DAY2-3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY3-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1070,7 +1070,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="name" content="李凤伟的小站">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
