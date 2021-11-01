@@ -208,6 +208,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY3-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/27/DAY3-1/" class="post-title-link" itemprop="url">DAY3-1_EVENT（上）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-27 13:49:59" itemprop="dateCreated datePublished" datetime="2021-09-27T13:49:59+08:00">2021-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-11 20:17:12" itemprop="dateModified" datetime="2021-10-11T20:17:12+08:00">2021-10-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/千锋/" itemprop="url" rel="index">
+                    <span itemprop="name">千锋</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="EVENT（上）"><a href="#EVENT（上）" class="headerlink" title="EVENT（上）"></a>EVENT（上）</h1><ul>
+<li>之前我们简单的了解过一些事件，比如 <code>onclick</code> / <code>onload</code> / <code>onscroll</code> / …</li>
+<li>今天开始，我们详细的学习一些 <strong>事件</strong></li>
+</ul><h2 id="什么是事件"><a href="#什么是事件" class="headerlink" title="什么是事件"></a>什么是事件</h2><ul>
+<li><p>一个事件由什么东西组成</p>
+<ul>
+<li>触发谁的事件：事件源</li>
+<li>触发什么事件：事件类型</li>
+<li>触发以后做什么：事件处理函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>)</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">// 谁来触发事件 =&gt; oDiv =&gt; 这个事件的事件源就是 oDiv</span></span><br><span class="line"><span class="comment">// 触发什么事件 =&gt; onclick =&gt; 这个事件类型就是 click</span></span><br><span class="line"><span class="comment">// 触发之后做什么 =&gt; function () &#123;&#125; =&gt; 这个事件的处理函数</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们想要在点击 div 以后做什么事情，就把我们要做的事情写在事件处理函数里面</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oDiv = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>)</span><br><span class="line"></span><br><span class="line">oDiv.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'你点击了 div'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>当我们点击 div 的时候，就会执行事件处理函数内部的代码</li>
+<li>每点击一次，就会执行一次事件处理函数</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/27/DAY3-1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY3-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -282,97 +385,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/09/27/DAY3-2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/27/DAY2-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WayneLee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李凤伟的小站">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/27/DAY2-5/" class="post-title-link" itemprop="url">DAY2-5_DOM（下）</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-27 13:49:59" itemprop="dateCreated datePublished" datetime="2021-09-27T13:49:59+08:00">2021-09-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-11 20:15:55" itemprop="dateModified" datetime="2021-10-11T20:15:55+08:00">2021-10-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/千锋/" itemprop="url" rel="index">
-                    <span itemprop="name">千锋</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="DOM（下）"><a href="#DOM（下）" class="headerlink" title="DOM（下）"></a>DOM（下）</h1><ul>
-<li>DOM 就是我们 html 结构中一个一个的节点构成的</li>
-<li>不光我们的标签是一个节点，我们写的文本内容也是一个节点，注释，包括空格都是节点</li>
-</ul><h2 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h2><ul>
-<li>DOM 的节点我们一般分为常用的三大类 <strong>元素节点</strong> / <strong>文本节点</strong> / <strong>属性节点</strong></li>
-<li>什么是分类，比如我们在获取元素的时候，通过各种方法获取到的我们叫做元素节点（标签节点）</li>
-<li>比如我们标签里面写的文字，那么就是文本节点</li>
-<li>写在每一个标签上的属性，就是属性节点</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/27/DAY2-5/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1121,9 +1133,6 @@
       </span>
       <span class="links-of-author-item">
         <a href="mailto:yourname@gmail.com" title="E-Mail &amp;rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://weibo.com/yourname" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
   </div>
 
