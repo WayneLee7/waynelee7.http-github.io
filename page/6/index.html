@@ -208,7 +208,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/盒模型有那些/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/简单计算器实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -222,7 +222,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/31/%E7%9B%92%E6%A8%A1%E5%9E%8B%E6%9C%89%E9%82%A3%E4%BA%9B/" class="post-title-link" itemprop="url">盒模型有那些</a>
+            <a href="/2018/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">简单计算器实现</a>
         </h1>
 
         <div class="post-meta">
@@ -232,7 +232,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-05-31 18:16:02" itemprop="dateCreated datePublished" datetime="2018-05-31T18:16:02+08:00">2018-05-31</time>
+              <time title="创建时间：2018-07-19 20:34:05" itemprop="dateCreated datePublished" datetime="2018-07-19T20:34:05+08:00">2018-07-19</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,8 +240,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
             </span>
@@ -257,13 +257,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="盒模型有哪些？有什么区别？"><a href="#盒模型有哪些？有什么区别？" class="headerlink" title="盒模型有哪些？有什么区别？"></a>盒模型有哪些？有什么区别？</h1><p>盒模型分为IE盒模型和W3C标准盒模型。</p><ol>
-<li><strong>W3C 标准盒模型content-box</strong>：属性width,height只包含内容content，不包含border和padding。</li>
-<li><strong>IE 盒模型border-box</strong>：属性width,height包含border和padding，指的是content+padding+border。</li>
-</ol>
+          <p> 需要掌握JavaScript的eval()函数，其主要是用来计算某个字符串，并执行其中的 JavaScript 代码。 </p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>计算器功能简单模拟<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 页面代码 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"n1"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">select</span> <span class="attr">v-model</span>=<span class="string">"opt"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span>&gt;</span>+<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span>&gt;</span>-<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span>&gt;</span>*<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span>&gt;</span>/<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"n2"</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"equal"</span>&gt;</span>=<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model</span>=<span class="string">"result"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">     <span class="comment">&lt;!-- js代码 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">            el:<span class="string">"#app"</span>,</span></span><br><span class="line">            data:&#123;</span><br><span class="line">                n1:0,</span><br><span class="line">                n2:0,</span><br><span class="line"><span class="javascript">                opt:<span class="string">'-'</span>,</span></span><br><span class="line">                result:0</span><br><span class="line">            &#125;,</span><br><span class="line">            methods:&#123;</span><br><span class="line">                equal()&#123;</span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> optStr = <span class="string">'parseInt(this.n1)'</span> + <span class="keyword">this</span>.opt + <span class="string">'parseInt(this.n2)'</span>;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">this</span>.result = <span class="built_in">eval</span>(optStr);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/05/31/盒模型有那些/#more" rel="contents">
+              <a class="btn" href="/2018/07/19/简单计算器实现/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -287,7 +284,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/子盒子在父盒子中水平垂直居中的方法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/Vue双向数据绑定v-model指令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -301,7 +298,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/30/%E5%AD%90%E7%9B%92%E5%AD%90%E5%9C%A8%E7%88%B6%E7%9B%92%E5%AD%90%E4%B8%AD%E6%B0%B4%E5%B9%B3%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">子盒子在父盒子中水平垂直居中的方法</a>
+            <a href="/2018/07/18/Vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9Av-model%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">Vue双向数据绑定v-model指令</a>
         </h1>
 
         <div class="post-meta">
@@ -311,7 +308,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-05-30 23:59:09" itemprop="dateCreated datePublished" datetime="2018-05-30T23:59:09+08:00">2018-05-30</time>
+              <time title="创建时间：2018-07-18 23:19:27" itemprop="dateCreated datePublished" datetime="2018-07-18T23:19:27+08:00">2018-07-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -319,8 +316,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
             </span>
@@ -336,10 +333,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="子盒子在父盒子中水平垂直居中有几种方法？"><a href="#子盒子在父盒子中水平垂直居中有几种方法？" class="headerlink" title="子盒子在父盒子中水平垂直居中有几种方法？"></a>子盒子在父盒子中水平垂直居中有几种方法？</h1><h4 id="（定位、弹性盒子）"><a href="#（定位、弹性盒子）" class="headerlink" title="（定位、弹性盒子）"></a>（定位、弹性盒子）</h4><p>水平垂直居中：</p><h5 id="1-定位position-margin外边距（需要知道子盒子的宽高）"><a href="#1-定位position-margin外边距（需要知道子盒子的宽高）" class="headerlink" title="1.定位position+margin外边距（需要知道子盒子的宽高）"></a>1.定位position+margin外边距（需要知道子盒子的宽高）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/*父盒子*/</span><br><span class="line">position: relative;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*子盒子*/</span><br><span class="line">position: absolute;            </span><br><span class="line">top: 50%;            </span><br><span class="line">left: 50%;            </span><br><span class="line">margin-top: -50px;            </span><br><span class="line">margin-left: -50px;</span><br></pre></td></tr></table></figure>
+          <h3 id="双向数据绑定可以简单理解为：后端定义的数据改变，前端页面展示的时候会自动改变，数据通过前端页面修改的时候，后端定义的数据内容也会随之改变。"><a href="#双向数据绑定可以简单理解为：后端定义的数据改变，前端页面展示的时候会自动改变，数据通过前端页面修改的时候，后端定义的数据内容也会随之改变。" class="headerlink" title="双向数据绑定可以简单理解为：后端定义的数据改变，前端页面展示的时候会自动改变，数据通过前端页面修改的时候，后端定义的数据内容也会随之改变。"></a>双向数据绑定可以简单理解为：后端定义的数据改变，前端页面展示的时候会自动改变，数据通过前端页面修改的时候，后端定义的数据内容也会随之改变。</h3><p>指令中v-model可以实现双向数据绑定。</p><p>v-model只能应用在表单元素中，如：input（radio、text、address、email…）、checkbox、select、textarea等。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/05/30/子盒子在父盒子中水平垂直居中的方法/#more" rel="contents">
+              <a class="btn" href="/2018/07/18/Vue双向数据绑定v-model指令/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -363,7 +360,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/CSS3新特性/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/Vue事件修饰符/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -377,7 +374,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/30/CSS3%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-title-link" itemprop="url">CSS3新特性</a>
+            <a href="/2018/07/18/Vue%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="post-title-link" itemprop="url">Vue事件修饰符</a>
         </h1>
 
         <div class="post-meta">
@@ -387,7 +384,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-05-30 22:04:36" itemprop="dateCreated datePublished" datetime="2018-05-30T22:04:36+08:00">2018-05-30</time>
+              <time title="创建时间：2018-07-18 09:45:13" itemprop="dateCreated datePublished" datetime="2018-07-18T09:45:13+08:00">2018-07-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -395,8 +392,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
             </span>
@@ -412,85 +409,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="css3有哪些新特性"><a href="#css3有哪些新特性" class="headerlink" title="css3有哪些新特性"></a>css3有哪些新特性</h1><ol>
-<li>实现圆角<code>border-radius</code>、阴影<code>box-shadow</code>、<code>border-image</code>；</li>
-<li>对文字加特效<code>text-shadow</code>、线性渐变<code>gradient</code>、旋转<code>transform</code>；</li>
-<li><code>transform</code>：旋转<code>rotate（9deg）</code>、缩放<code>scale（0.85,0.9）</code>、定位<code>translate（0px，-30px）</code>、倾斜<code>skew（-9deg、0deg）</code>；</li>
-<li>增加了更多的css选择器、多背景、rgba</li>
-<li>在css3中引入为一个的伪类：：selection</li>
-<li>媒体查询、多栏布局</li>
-</ol>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/HTML相关的面试题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WayneLee">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="李凤伟的小站">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/05/30/HTML%E7%9B%B8%E5%85%B3%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">HTML相关的面试题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-05-30 19:17:18" itemprop="dateCreated datePublished" datetime="2018-05-30T19:17:18+08:00">2018-05-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="html相关-面试问题"><a href="#html相关-面试问题" class="headerlink" title="html相关 面试问题"></a>html相关 面试问题</h1><h4 id="1-h5新标签有哪些？为什么要加强语义化？"><a href="#1-h5新标签有哪些？为什么要加强语义化？" class="headerlink" title="1. h5新标签有哪些？为什么要加强语义化？"></a>1. h5新标签有哪些？为什么要加强语义化？</h4><p>新标签：</p><p><strong>文档类型设定</strong>：<code>!doctype html</code>；</p><p><strong>字符设定</strong>：<code>meta charset=&quot;utf-8&quot;</code>；</p><p><strong>常用新标签</strong>：</p><p> <code>header</code>，一般作为网页的<strong>头部</strong>使用，可以多个；</p><p> <code>footer</code>，底部，<strong>不一定是文档最底部</strong>，可以多个；</p>
+          <p> 顾名思义，“事件修饰符”那么肯定是用来修饰事件，既然和事件有关系，那么肯定和“v-on”指令也可简写为：@ 有关系。 </p><p>事件修饰符有以下几类：</p><p>.stop：阻止冒泡</p><p>.prevent：阻止默认事件</p><p>.capture：事件捕获</p><p>.self：只当事件在该元素本身触发时触发回调</p><p>.once：事件只触发一次</p><h3 id="1、阻止冒泡"><a href="#1、阻止冒泡" class="headerlink" title="1、阻止冒泡"></a>1、阻止冒泡</h3>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/05/30/HTML相关的面试题/#more" rel="contents">
+              <a class="btn" href="/2018/07/18/Vue事件修饰符/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -514,7 +436,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/关于position的六种属性/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/文字简单跑马灯效果/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -528,7 +450,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/29/%E5%85%B3%E4%BA%8Eposition%E7%9A%84%E5%85%AD%E7%A7%8D%E5%B1%9E%E6%80%A7/" class="post-title-link" itemprop="url">关于position的六种属性</a>
+            <a href="/2018/07/17/%E6%96%87%E5%AD%97%E7%AE%80%E5%8D%95%E8%B7%91%E9%A9%AC%E7%81%AF%E6%95%88%E6%9E%9C/" class="post-title-link" itemprop="url">文字简单跑马灯效果</a>
         </h1>
 
         <div class="post-meta">
@@ -538,7 +460,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-05-29 10:57:11" itemprop="dateCreated datePublished" datetime="2018-05-29T10:57:11+08:00">2018-05-29</time>
+              <time title="创建时间：2018-07-17 22:45:13" itemprop="dateCreated datePublished" datetime="2018-07-17T22:45:13+08:00">2018-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -546,8 +468,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
             </span>
@@ -563,10 +485,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="position的定位属性"><a href="#position的定位属性" class="headerlink" title="position的定位属性"></a>position的定位属性</h2><h4 id="1、position：static（默认值）无特殊定位。"><a href="#1、position：static（默认值）无特殊定位。" class="headerlink" title="1、position：static（默认值）无特殊定位。"></a>1、position：static（默认值）无特殊定位。</h4><p>（1）元素出现在正常的流中（忽略top、bottom、left、right或者z-index的声明）<br>（2）当没有为元素指定方式时，默认为static，也就是按照文档的流式（flow）定位，将元素放到一个合适的地方。</p><h4 id="2、position：inherit-规定从父元素继承position的属性值。"><a href="#2、position：inherit-规定从父元素继承position的属性值。" class="headerlink" title="2、position：inherit 规定从父元素继承position的属性值。"></a>2、position：inherit 规定从父元素继承position的属性值。</h4>
+          <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>跑马灯效果<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>　　<span class="comment">&lt;!-- 页面部分 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"go()"</span>&gt;</span>开始<span class="tag">&lt;/<span class="name">button</span>&gt;</span> <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"stop()"</span>&gt;</span>停止<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">　　<span class="comment">&lt;!-- JS部分 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">            el : <span class="string">"#app"</span>,</span></span><br><span class="line">            data : &#123;</span><br><span class="line"><span class="javascript">                msg : <span class="string">'好好努力，加油加油每一天'</span>,<span class="comment">//跑马灯文字</span></span></span><br><span class="line"><span class="javascript">                interObj : <span class="literal">null</span>  <span class="comment">//定时器对象</span></span></span><br><span class="line">            &#125;,</span><br><span class="line">            methods : &#123;</span><br><span class="line">               </span><br><span class="line">                go()&#123;</span><br><span class="line"><span class="javascript">                    <span class="keyword">if</span>(<span class="keyword">this</span>.interObj == <span class="literal">null</span>)&#123;</span></span><br><span class="line"><span class="javascript">                        _this = <span class="keyword">this</span></span></span><br><span class="line"><span class="javascript">                        <span class="keyword">this</span>.interObj = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                        　　<span class="keyword">let</span> start = _this.msg.substring(<span class="number">0</span>,<span class="number">1</span>);</span></span><br><span class="line"><span class="javascript">                        　　<span class="keyword">let</span> end = _this.msg.substring(<span class="number">1</span>);</span></span><br><span class="line">                        　　_this.msg = end + start;</span><br><span class="line">                    　　&#125;,1000);</span><br><span class="line">                    &#125;</span><br><span class="line">                    </span><br><span class="line">                &#125;,</span><br><span class="line">                stop()&#123;</span><br><span class="line"><span class="javascript">                    clearInterval(<span class="keyword">this</span>.interObj);</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">this</span>.interObj = <span class="literal">null</span>;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/05/29/关于position的六种属性/#more" rel="contents">
+              <a class="btn" href="/2018/07/17/文字简单跑马灯效果/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -590,7 +512,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/CSS优先级的计算方法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/Vue指令v-on/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -604,7 +526,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/29/CSS%E4%BC%98%E5%85%88%E7%BA%A7%E7%9A%84%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">CSS优先级的计算方法</a>
+            <a href="/2018/07/17/Vue%E6%8C%87%E4%BB%A4v-on/" class="post-title-link" itemprop="url">Vue指令v-on</a>
         </h1>
 
         <div class="post-meta">
@@ -614,7 +536,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-05-29 09:23:41" itemprop="dateCreated datePublished" datetime="2018-05-29T09:23:41+08:00">2018-05-29</time>
+              <time title="创建时间：2018-07-17 01:12:16" itemprop="dateCreated datePublished" datetime="2018-07-17T01:12:16+08:00">2018-07-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -622,8 +544,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
             </span>
@@ -639,10 +561,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="css优先级的计算方法"><a href="#css优先级的计算方法" class="headerlink" title="css优先级的计算方法"></a>css优先级的计算方法</h1><h2 id="1-CSS优先级比较"><a href="#1-CSS优先级比较" class="headerlink" title="1.CSS优先级比较"></a>1.CSS优先级比较</h2><p>！important &gt; 内联样式 &gt; id &gt; class &gt; 标签 &gt; 通配符 &gt; 继承 &gt; 默认</p><h2 id="2-CSS权重计算"><a href="#2-CSS权重计算" class="headerlink" title="2.CSS权重计算"></a>2.CSS权重计算</h2><p>我们把特殊性分为4个等级，每个等级代表一类选择器，每个等级的值为其所代表的选择器的个数乘以这一等级的权值，最后把所有等级的值相加得出选择器的特殊值。</p>
+          <p> v-on指令用来触发页面事件的指令。 </p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"show()"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">            el : <span class="string">"#app"</span>,</span></span><br><span class="line">            data : &#123;&#125;,</span><br><span class="line">            methods:&#123;</span><br><span class="line"><span class="javascript">                show:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">                    alert(<span class="string">'aa'</span>);</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/05/29/CSS优先级的计算方法/#more" rel="contents">
+              <a class="btn" href="/2018/07/17/Vue指令v-on/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -666,7 +588,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/HTML5新特性复习整理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/Vue第五篇指令v-bind/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -680,7 +602,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2018/05/29/HTML5%E6%96%B0%E7%89%B9%E6%80%A7%E5%A4%8D%E4%B9%A0%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">HTML5新特性复习整理</a>
+            <a href="/2018/07/16/Vue%E7%AC%AC%E4%BA%94%E7%AF%87%E6%8C%87%E4%BB%A4v-bind/" class="post-title-link" itemprop="url">Vue第五篇指令v-bind</a>
         </h1>
 
         <div class="post-meta">
@@ -690,7 +612,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-05-29 08:26:44" itemprop="dateCreated datePublished" datetime="2018-05-29T08:26:44+08:00">2018-05-29</time>
+              <time title="创建时间：2018-07-16 23:12:16" itemprop="dateCreated datePublished" datetime="2018-07-16T23:12:16+08:00">2018-07-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -698,8 +620,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
             </span>
@@ -715,10 +637,314 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p> h5是html的最新版本，是14年由w3c完成标准制定。增强了浏览器的原生功能，减少浏览器插件（eg：flash）的应用，提高用户体验满意度，让开发更加方便。 </p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">开头的<span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line"> 字符编码变得简洁，</span><br></pre></td></tr></table></figure>
+          <p>v-bind：是Vue提供的用于绑定html属性的指令。</p><p>html中常见的属性有：id、class、src、title、style等，他们都是以 名称/值对 的形式出现，如：id=”first”</p><p>本篇的内容主要是介绍使用v-bind指令动态给这些属性赋值。</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">v-bind:src</span>=<span class="string">"path"</span> <span class="attr">style</span>=<span class="string">"width: 200px;height: 200px"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">            el : <span class="string">"#app"</span>,</span></span><br><span class="line">            data : &#123;</span><br><span class="line"><span class="javascript">                path : <span class="string">"img/clock.png"</span></span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2018/05/29/HTML5新特性复习整理/#more" rel="contents">
+              <a class="btn" href="/2018/07/16/Vue第五篇指令v-bind/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/Vue第四篇指令v-html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/16/Vue%E7%AC%AC%E5%9B%9B%E7%AF%87%E6%8C%87%E4%BB%A4v-html/" class="post-title-link" itemprop="url">Vue第四篇指令v-html</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-16 22:12:16" itemprop="dateCreated datePublished" datetime="2018-07-16T22:12:16+08:00">2018-07-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="指令v-html"><a href="#指令v-html" class="headerlink" title="指令v-html"></a>指令v-html</h3><p>如果我们展示的数据包含元素标签或者样式，我们想展示标签或样式所定义的属性作用，该怎么进行渲染</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-cloak</span>&gt;</span>&#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-text</span>=<span class="string">"msg"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">p</span> <span class="attr">v-html</span>=<span class="string">"msg"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="javascript">       <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">           el : <span class="string">"#app"</span>,</span></span><br><span class="line">           data : &#123;</span><br><span class="line"><span class="xml">               msg : "<span class="tag">&lt;<span class="name">h1</span>&gt;</span>这是一个h1元素内容<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>"</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/16/Vue第四篇指令v-html/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/插值表达式和v-text的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/16/%E6%8F%92%E5%80%BC%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8Cv-text%E7%9A%84%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">插值表达式和v-text的区别</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-16 21:57:56" itemprop="dateCreated datePublished" datetime="2018-07-16T21:57:56+08:00">2018-07-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="页面频繁刷新或者网速很慢的时候，页面会先出现源代码，再一闪而过出现真实的数据。"><a href="#页面频繁刷新或者网速很慢的时候，页面会先出现源代码，再一闪而过出现真实的数据。" class="headerlink" title="页面频繁刷新或者网速很慢的时候，页面会先出现源代码，再一闪而过出现真实的数据。"></a>页面频繁刷新或者网速很慢的时候，页面会先出现源代码，再一闪而过出现真实的数据。</h4><p>对于这个问题Vue给予了解决办法</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">        &lt;p v-cloak&gt; &#123;&#123; msg &#125;&#125; &lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/16/插值表达式和v-text的区别/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/Vue之路第二篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/16/Vue%E4%B9%8B%E8%B7%AF%E7%AC%AC%E4%BA%8C%E7%AF%87/" class="post-title-link" itemprop="url">Vue之路第二篇</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-16 16:45:31" itemprop="dateCreated datePublished" datetime="2018-07-16T16:45:31+08:00">2018-07-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="插值表达式"><a href="#插值表达式" class="headerlink" title="插值表达式"></a>插值表达式</h2><p>1、首先创建一个html页面 导入Vue 包</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"js/vue.min.js"</span>&gt;&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure><p> 每个 Vue 应用都是通过用 <code>Vue</code> 函数创建一个新的 <strong>Vue 实例</strong>开始的： </p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;p&gt; &#123;&#123; msg &#125;&#125; &lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp"> &lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/16/Vue之路第二篇/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/Vue之路第一篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/15/Vue%E4%B9%8B%E8%B7%AF%E7%AC%AC%E4%B8%80%E7%AF%87/" class="post-title-link" itemprop="url">Vue之路第一篇</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-07-15 15:01:47" itemprop="dateCreated datePublished" datetime="2018-07-15T15:01:47+08:00">2018-07-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1、开发工具选择"><a href="#1、开发工具选择" class="headerlink" title="1、开发工具选择"></a>1、开发工具选择</h4><p> 这个和个人的开发习惯有关，并不做强求，厉害的话用记事本也可以。但是我还是建议用人气比较高的编辑工具，毕竟功能比较全面，开发起来效率比较高。 </p><p>Visual Studio Code：一个运行于 Mac OS X、<a href="https://baike.baidu.com/item/Windows" target="_blank" rel="noopener">Windows</a>和 Linux 之上的，针对于编写现代 Web 和云应用的跨平台源代码编辑器。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/15/Vue之路第一篇/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -742,7 +968,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -787,7 +1013,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -806,7 +1032,7 @@
   </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/yourname" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/waynelee7" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;waynelee7" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
         <a href="mailto:yourname@gmail.com" title="E-Mail &amp;rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>

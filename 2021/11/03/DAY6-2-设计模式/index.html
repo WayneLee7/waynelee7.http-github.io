@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="李凤伟的小站" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+  <meta name="description" content="设计模式 设计模式是我们在 解决问题的时候针对特定问题给出的简洁而优化的处理方案 我们有很多的设计模式 单例模式 组合模式 观察者模式 …   今天我们就聊一下这三个设计模式 单例模式 / 组合模式 / 观察者模式   单例模式 什么是单例模式呢？ 我们都知道，构造函数可以创造一个对象 我们 new 很多次构造函数就能得到很多的对象 单例模式： 就是使用构造函数实例化的时候，不管实例化多少回，都是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DAY6-2_设计模式">
+<meta property="og:url" content="http://yoursite.com/2021/11/03/DAY6-2-设计模式/index.html">
+<meta property="og:site_name" content="李凤伟的小站">
+<meta property="og:description" content="设计模式 设计模式是我们在 解决问题的时候针对特定问题给出的简洁而优化的处理方案 我们有很多的设计模式 单例模式 组合模式 观察者模式 …   今天我们就聊一下这三个设计模式 单例模式 / 组合模式 / 观察者模式   单例模式 什么是单例模式呢？ 我们都知道，构造函数可以创造一个对象 我们 new 很多次构造函数就能得到很多的对象 单例模式： 就是使用构造函数实例化的时候，不管实例化多少回，都是">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-11-03T02:50:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DAY6-2_设计模式">
+<meta name="twitter:description" content="设计模式 设计模式是我们在 解决问题的时候针对特定问题给出的简洁而优化的处理方案 我们有很多的设计模式 单例模式 组合模式 观察者模式 …   今天我们就聊一下这三个设计模式 单例模式 / 组合模式 / 观察者模式   单例模式 什么是单例模式呢？ 我们都知道，构造函数可以创造一个对象 我们 new 很多次构造函数就能得到很多的对象 单例模式： 就是使用构造函数实例化的时候，不管实例化多少回，都是">
+
+<link rel="canonical" href="http://yoursite.com/2021/11/03/DAY6-2-设计模式/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>DAY6-2_设计模式 | 李凤伟的小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+  <!-- 爆炸红心效果 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script>
+<!-- 添加动态线条背景 -->
+
+<script type="text/javascript" color="0,0,0" opacity='1.0'  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+   <a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李凤伟的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/11/03/DAY6-2-设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DAY6-2_设计模式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-03 10:50:29" itemprop="dateCreated datePublished" datetime="2021-11-03T10:50:29+08:00">2021-11-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/千锋/" itemprop="url" rel="index">
+                    <span itemprop="name">千锋</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><ul>
+<li>设计模式是我们在 <strong>解决问题的时候针对特定问题给出的简洁而优化的处理方案</strong></li>
+<li>我们有很多的设计模式<ul>
+<li>单例模式</li>
+<li>组合模式</li>
+<li>观察者模式</li>
+<li>…</li>
+</ul>
+</li>
+<li>今天我们就聊一下这三个设计模式<ul>
+<li>单例模式 / 组合模式 / 观察者模式</li>
+</ul>
+</li>
+</ul><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><ul>
+<li>什么是单例模式呢？</li>
+<li>我们都知道，构造函数可以创造一个对象</li>
+<li>我们 new 很多次构造函数就能得到很多的对象</li>
+<li>单例模式： 就是使用构造函数实例化的时候，不管实例化多少回，都是同一个对象<ul>
+<li>也就是一个构造函数一生只能 new 出一个对象</li>
+</ul>
+</li>
+<li>也就是说，当我们使用构造函数，每一次 new 出来的对象 属性/功能/方法 <strong>完全一样</strong> 的时候，我们把他设计成单例模式</li>
+</ul><a id="more"></a>
+
+<h3 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h3><ul>
+<li><p>单例模式的核心代码很简单</p>
+</li>
+<li><p>其实就是判断一下，他曾经有没有 new 出来过对象</p>
+</li>
+<li><p>如果有，就还继续使用之前的那个对象，如果没有，那么就给你 new 一个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 准备一个构造函数</span></span><br><span class="line"><span class="comment">// 将来要 new 的</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 准备一个单例模式函数</span></span><br><span class="line"><span class="comment">// 这个单例模式函数要把 Person 做成一个单例模式</span></span><br><span class="line"><span class="comment">// 将来再想要 new Person 的时候只要执行这个 singleton 函数就可以了</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">singleton</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> instance</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">if</span> (!instance) &#123; <span class="comment">// 如果 instance 没有内容</span></span><br><span class="line">    <span class="comment">// 来到这里，证明 instance 没有内容</span></span><br><span class="line">    <span class="comment">// 给他赋值为 new Person</span></span><br><span class="line">      instance = <span class="keyword">new</span> Person()</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 返回的永远都是第一次 new Person 的实例</span></span><br><span class="line">  <span class="comment">// 也就是永远都是一个实例</span></span><br><span class="line">  <span class="keyword">return</span> instance</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> p1 = singleton()</span><br><span class="line"><span class="keyword">const</span> p2 = singleton()</span><br><span class="line"><span class="built_in">console</span>.log(p1 === p2) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
+<li><p>我们就用这个核心代码简单书写一个 demo</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这个构造函数的功能就是创建一个 div，添加到页面中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateDiv</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(<span class="keyword">this</span>.div)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span> (<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.div.innerHTML = text</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 准备把这个 CreateDiv 做成单例模式</span></span><br><span class="line"><span class="comment">// 让 singleton 成为一个闭包函数</span></span><br><span class="line"><span class="keyword">const</span> singleton = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> instance</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">text</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!instance) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> CreateDiv()</span><br><span class="line">        &#125;</span><br><span class="line">        instance.init(text)</span><br><span class="line">        <span class="keyword">return</span> instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)()</span><br><span class="line"></span><br><span class="line">singleton(<span class="string">'hello'</span>) <span class="comment">// 第一次的时候，页面中会出现一个新的 div ，内容是 hello</span></span><br><span class="line">singleton(<span class="string">'world'</span>) <span class="comment">// 第二次的时候，不会出现新的 div，而是原先的 div 内容变成了 world</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><ul>
+<li><p>组合模式，就是把几个构造函数的器动方式组合再一起</p>
+</li>
+<li><p>然后用一个 ”遥控器“ 进行统一调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GetHome</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    init () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'到家了'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OpenComputer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    init () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'打开电脑'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PlayGame</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    init () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'玩游戏'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面几个构造函数的创造的实例化对象的 <strong>启动方式</strong> 都一致</li>
+<li>那么我们就可以把这几个函数以组合模式的情况书写</li>
+<li>然后统一启动</li>
+</ul>
+</li>
+<li><p>准备一个 <strong>组合模式</strong> 的构造函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Compose</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> () &#123;</span><br><span class="line">        <span class="keyword">this</span>.compose = []</span><br><span class="line">    &#125;</span><br><span class="line">    	</span><br><span class="line">    <span class="comment">// 添加任务的方法</span></span><br><span class="line">    add (task) &#123;</span><br><span class="line">        <span class="keyword">this</span>.compose.push(task)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 一个执行任务的方法</span></span><br><span class="line">    execute () &#123;</span><br><span class="line">        <span class="keyword">this</span>.compose.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            item.init()</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们就用我们的组合模式构造函数来吧前面的几个功能组合起来</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> c = <span class="keyword">new</span> Compose()</span><br><span class="line"><span class="comment">// 把所有要完成的任务都放在队列里面</span></span><br><span class="line">c.add(<span class="keyword">new</span> GetHome())</span><br><span class="line">c.add(<span class="keyword">new</span> OpenComputer)</span><br><span class="line">c.add(<span class="keyword">new</span> PlayGame)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接器动任务队列</span></span><br><span class="line">c.execute()</span><br><span class="line"><span class="comment">// 就会按照顺序执行三个对象中的 init 函数</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><ul>
+<li>观察者模式，通常也被叫做 <strong>发布-订阅模式</strong>  或者 <strong>消息模式</strong></li>
+<li>英文名称叫做 <strong><code>Observer</code></strong></li>
+<li>官方解释： 当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新，解决了主体对象与观察者之间功能的耦合，即一个对象状态改变给其他对象通知的问题</li>
+<li>听起来很迷糊，但是其实没有很难</li>
+</ul>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><ul>
+<li>当你想去书店买书，但是恰巧今天你要买的书没有了</li>
+<li>我们又不能总在书店等着，就把我们的手机留给店员</li>
+<li>当你需要的书到了的时候，他会打电话通知你，你去买了就好了</li>
+<li>你买到数了以后，就告诉他，我买到了，那么以后再来了书就不会通知你了</li>
+</ul>
+<h3 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h3><ul>
+<li><p>上面的例子可能还不是很明确</p>
+</li>
+<li><p>但是 <code>addEventListener</code> 是一个我们都用过的东西</p>
+</li>
+<li><p>这个东西其实就是一个标准的 <strong>观察者模式</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'btn 被点击了'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>上面这个就是有一个 <strong>无形的观察者</strong> 再观察着 <code>btn</code> 的一举一动</li>
+<li>当这个 <code>btn</code> 被点击的时候，就会执行 对应的函数</li>
+<li>我们也可以多绑定几个函数</li>
+</ul>
+</li>
+<li><p>说白了： 观察者模式就是我们自己实现一个 <code>addEventListener</code> 的功能</p>
+<ul>
+<li>只不过 <code>addEventListaner</code> 只有固定的一些事件，而且只能给 dom 元素绑定</li>
+<li>而我们自己写的可以随便绑定一个事件名称，自己选择触发时机而已</li>
+</ul>
+</li>
+</ul>
+<h3 id="书写代码"><a href="#书写代码" class="headerlink" title="书写代码"></a>书写代码</h3><ul>
+<li><p>首先我们分析功能</p>
+<ul>
+<li><p>我们要有一个观察者（这里抽象为一个对象 <code>{}</code>）</p>
+</li>
+<li><p>需要有一个属性，存放消息的盒子（把你绑定的所有事件放在里面）</p>
+</li>
+<li><p>需要一个 on 方法，用于添加事件</p>
+</li>
+<li><p>需要一个 emit 方法，用于发布事件（触发）</p>
+</li>
+<li><p>需要一个 off 方法，把已经添加的方法取消</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> observer = &#123;</span><br><span class="line">    message: &#123;&#125;,</span><br><span class="line">    on: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    emit: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;,</span><br><span class="line">    off: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们把它写成一个构造函数的形式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> () &#123;</span><br><span class="line">        <span class="keyword">this</span>.message = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    on () &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    emit () &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    off () &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>现在，一个观察者的雏形就出来了</p>
+</li>
+<li><p>接下来完善方法就可以了</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="ON"><a href="#ON" class="headerlink" title="ON"></a>ON</h4><ul>
+<li><p>先来写 ON 方法</p>
+</li>
+<li><p>添加一个事件</p>
+</li>
+<li><p>我们的 on 方法需要接受 两个参数</p>
+<ul>
+<li>事件类型</li>
+<li>事件处理函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> () &#123;</span><br><span class="line">        <span class="keyword">this</span>.message = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    on (type, fn) &#123;</span><br><span class="line">        <span class="comment">// 判断消息盒子里面有没有设置事件类型</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.message[type]) &#123;</span><br><span class="line">            <span class="comment">// 证明消息盒子里面没有这个事件类型</span></span><br><span class="line">            <span class="comment">// 那么我们直接添加进去</span></span><br><span class="line">            <span class="comment">// 并且让他的值是一个数组，再数组里面放上事件处理函数</span></span><br><span class="line">            <span class="keyword">this</span>.message[type] = [fn]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 证明消息盒子里面有这个事件类型</span></span><br><span class="line">            <span class="comment">// 那么我们直接向数组里面追加事件处理函数就行了</span></span><br><span class="line">            <span class="keyword">this</span>.message[type].push(fn)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    emit () &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    off () &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="EMIT"><a href="#EMIT" class="headerlink" title="EMIT"></a>EMIT</h4><ul>
+<li><p>接下来就是发布事件</p>
+</li>
+<li><p>也就是让我们已经订阅好的事件执行一下</p>
+</li>
+<li><p>同样需要接受两个参数</p>
+<ul>
+<li>要触发的事件类型</li>
+<li>给事件处理函数传递的参数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> () &#123;</span><br><span class="line">        <span class="keyword">this</span>.message = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    on (type, fn) &#123;</span><br><span class="line">        <span class="comment">// 判断消息盒子里面有没有设置事件类型</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.message[type]) &#123;</span><br><span class="line">            <span class="comment">// 证明消息盒子里面没有这个事件类型</span></span><br><span class="line">            <span class="comment">// 那么我们直接添加进去</span></span><br><span class="line">            <span class="comment">// 并且让他的值是一个数组，再数组里面放上事件处理函数</span></span><br><span class="line">            <span class="keyword">this</span>.message[type] = [fn]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 证明消息盒子里面有这个事件类型</span></span><br><span class="line">            <span class="comment">// 那么我们直接向数组里面追加事件处理函数就行了</span></span><br><span class="line">            <span class="keyword">this</span>.message[type].push(fn)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    emit (type, ...arg) &#123;</span><br><span class="line">        <span class="comment">// 判断你之前有没有订阅过这个事件</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.message[type]) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果有，那么我们就处理一下参数</span></span><br><span class="line">        <span class="keyword">const</span> event = &#123;</span><br><span class="line">            type: type,</span><br><span class="line">            arg: arg || &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 循环执行为当前事件类型订阅的所有事件处理函数</span></span><br><span class="line">        <span class="keyword">this</span>.message[type].forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            item.call(<span class="keyword">this</span>, event)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    off () &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="OFF"><a href="#OFF" class="headerlink" title="OFF"></a>OFF</h4><ul>
+<li><p>最后就是移除事件</p>
+</li>
+<li><p>就是把已经订阅的事件处理函数移除掉</p>
+</li>
+<li><p>同样需要接受两个参数</p>
+<ul>
+<li>要移除的事件类型</li>
+<li>要移除的事件处理函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span> () &#123;</span><br><span class="line">        <span class="keyword">this</span>.message = &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    on (type, fn) &#123;</span><br><span class="line">        <span class="comment">// 判断消息盒子里面有没有设置事件类型</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.message[type]) &#123;</span><br><span class="line">            <span class="comment">// 证明消息盒子里面没有这个事件类型</span></span><br><span class="line">            <span class="comment">// 那么我们直接添加进去</span></span><br><span class="line">            <span class="comment">// 并且让他的值是一个数组，再数组里面放上事件处理函数</span></span><br><span class="line">            <span class="keyword">this</span>.message[type] = [fn]</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 证明消息盒子里面有这个事件类型</span></span><br><span class="line">            <span class="comment">// 那么我们直接向数组里面追加事件处理函数就行了</span></span><br><span class="line">            <span class="keyword">this</span>.message[type].push(fn)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    emit (type, ...arg) &#123;</span><br><span class="line">        <span class="comment">// 判断你之前有没有订阅过这个事件</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.message[type]) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果有，那么我们就处理一下参数</span></span><br><span class="line">        <span class="keyword">const</span> event = &#123;</span><br><span class="line">            type: type,</span><br><span class="line">            arg: arg || &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 循环执行为当前事件类型订阅的所有事件处理函数</span></span><br><span class="line">        <span class="keyword">this</span>.message[type].forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">            item.call(<span class="keyword">this</span>, event)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    off (type, fn) &#123;</span><br><span class="line">        <span class="comment">// 判断你之前有没有订阅过这个事件</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.message[type]) <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果有我们再进行移除</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.message[type].length; i++) &#123;</span><br><span class="line">            <span class="keyword">const</span> item =  <span class="keyword">this</span>.message[type][i]</span><br><span class="line">            <span class="keyword">if</span> (item === fn) &#123;</span><br><span class="line">                <span class="keyword">this</span>.message[type].splice(i, <span class="number">1</span>)</span><br><span class="line">                i--</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>以上就是最基本的 <strong>观察者模式</strong></p>
+</li>
+<li><p>接下来我们就使用一下试试看</p>
+</li>
+</ul>
+<h4 id="使用一下"><a href="#使用一下" class="headerlink" title="使用一下"></a>使用一下</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> o = <span class="keyword">new</span> Observer()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 准备两个事件处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'world'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 订阅事件</span></span><br><span class="line">o.on(<span class="string">'abc'</span>, a)</span><br><span class="line">o.on(<span class="string">'abc'</span>, b)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发布事件（触发）</span></span><br><span class="line">o.emit(<span class="string">'abc'</span>, <span class="string">'100'</span>, <span class="string">'200'</span>, <span class="string">'300'</span>) <span class="comment">// 两个函数都回执行</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 移除事件</span></span><br><span class="line">o.off(<span class="string">'abc'</span>, <span class="string">'b'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 再次发布事件（触发）</span></span><br><span class="line">o.emit(<span class="string">'abc'</span>, <span class="string">'100'</span>, <span class="string">'200'</span>, <span class="string">'300'</span>) <span class="comment">// 只执行一个 a 函数了</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/11/03/DAY6-1-闭包和继承/" rel="next" title="DAY6-1_闭包和继承">
+                  <i class="fa fa-chevron-left"></i> DAY6-1_闭包和继承
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2021/11/03/DAY6-3-jQuery1/" rel="prev" title="DAY6-3_jQuery1">
+                  DAY6-3_jQuery1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式"><span class="nav-number">1.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单例模式"><span class="nav-number">1.1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心代码"><span class="nav-number">1.1.1.</span> <span class="nav-text">核心代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">1.1.2.</span> <span class="nav-text">应用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合模式"><span class="nav-number">1.2.</span> <span class="nav-text">组合模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式"><span class="nav-number">1.3.</span> <span class="nav-text">观察者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个例子"><span class="nav-number">1.3.1.</span> <span class="nav-text">一个例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addEventListener"><span class="nav-number">1.3.2.</span> <span class="nav-text">addEventListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书写代码"><span class="nav-number">1.3.3.</span> <span class="nav-text">书写代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ON"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">ON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EMIT"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">EMIT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OFF"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">OFF</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用一下"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">使用一下</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="WayneLee"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">WayneLee</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/waynelee7" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;waynelee7" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail &amp;rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WayneLee</span>
+</div>
+  <!--<div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  -->
+<!--
+  <span class="post-meta-divider">|</span>
+-->
+  <!-- <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div> 
+  -->
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/11/2018 00:00:00");//
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":250,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
