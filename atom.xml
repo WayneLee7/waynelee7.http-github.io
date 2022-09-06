@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2022-09-06T14:02:32.209Z</updated>
+  <updated>2022-09-06T15:36:31.168Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react复习笔记</title>
+    <link href="http://yoursite.com/2022/09/06/react%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2022/09/06/react%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2022-09-06T14:14:35.000Z</published>
+    <updated>2022-09-06T15:36:31.168Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>React是一个用于构建用户界面的JavaScript库。主要用来写HTML页面或构建Web应用。</p><p>特点：</p><ul><li>声明式：只需要去描述UI看起来是什么样子，就和写HTML一样；</li><li>基于组件：组件是React中最重要的内容，组件表示页面中部分内容，通过组合、服用多个组件来完成这页面。</li><li>学习一次，随处使用：可以开发Web应用，移动端原生应用（react-navive）、虚拟现实应用等。</li></ul><a id="more"></a><h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="初始化项目："><a href="#初始化项目：" class="headerlink" title="初始化项目："></a>初始化项目：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure><h4 id="安装React"><a href="#安装React" class="headerlink" title="安装React"></a>安装React</h4><p>在需要安装的文件夹爱中打开终端，输入命令安装</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react react-dom react-scripts -D</span><br></pre></td></tr></table></figure><h4 id="引入React"><a href="#引入React" class="headerlink" title="引入React"></a>引入React</h4><p>引入react和react-dom 两个js文件，注意文件顺序。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;./node_modules/react/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./node_modules/react-dom/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure><h4 id="创建React元素"><a href="#创建React元素" class="headerlink" title="创建React元素"></a>创建React元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const title=React.createElement(&apos;h1&apos;,null,&apos;hello React&apos;)</span><br></pre></td></tr></table></figure><h4 id="创建根容器"><a href="#创建根容器" class="headerlink" title="创建根容器"></a>创建根容器</h4><p>首先在页面中创建根元素的容器，根容器的命名可以自己随意设定</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const root = ReactDOM.createRoot(document.querySelector(&apos;#root&apos;))</span><br></pre></td></tr></table></figure><h4 id="渲染React-元素到页面中"><a href="#渲染React-元素到页面中" class="headerlink" title="渲染React 元素到页面中"></a>渲染React 元素到页面中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.render(title)</span><br></pre></td></tr></table></figure><p>React.createElement( TagName, Attribute, RootNode )</p><p>ReactDOM.createRoot(targetDOM)</p><p>render( el )</p><h3 id="三个API"><a href="#三个API" class="headerlink" title="三个API"></a>三个API</h3><h4 id="React-createElement"><a href="#React-createElement" class="headerlink" title="React.createElement"></a>React.createElement</h4><p>用于创建React元素，React元素无法修改</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const button =React.createElement(&apos;button&apos;,&#123;</span><br><span class="line">id:&apos;btn&apos;,</span><br><span class="line">type:&apos;button&apos;,</span><br><span class="line">className:&apos;hello&apos;,</span><br><span class="line">onClick:()=&gt;&#123;alert(&apos;Clicked&apos;)&#125;</span><br><span class="line">&#125;,&apos;Click Me&apos;);</span><br><span class="line">const div=React.createElement(&apos;div&apos;,null,&apos;Content&apos;,button)</span><br></pre></td></tr></table></figure><ul><li>html标签必须小写</li><li>标签中的属性属性名：属性值</li><li>类的属性建议使用className，和js中的class关键字作区分</li><li>在设置事件属性时，属性名需修改为小驼峰命名法，属性值为函数</li><li>元素内容可以是文本内容，也可以加上子标签</li><li>React创建的元素一旦创建不可修改</li></ul><h4 id="ReactDOM-createRoot"><a href="#ReactDOM-createRoot" class="headerlink" title="ReactDOM.createRoot"></a>ReactDOM.createRoot</h4><p>创建React的根容器，用于放置React元素</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const root = ReactDOM.createRoot(document.querySelector(&apos;#root&apos;))</span><br></pre></td></tr></table></figure><h4 id="render"><a href="#render" class="headerlink" title="render"></a>render</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.render(div)</span><br></pre></td></tr></table></figure><p>当首次调用时，容器节点里的所有DOM元素都会替换，后续的调用则会使用React 的DOM差分算法（DOM diffing algorithm）进行高效的更新。</p><p>不会修改容器节点（只会修改容器的子节点)。可以在不覆盖现有子节点的情况下，将组建插入已有的DOM节点中。</p><h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><p>JSX是JavaScript XML的简写，是js的语法扩展，JSX使得我们可以以类似于html的形式去使用js。JSX便是React中声明式编程的体现方式。声明式编程，简单理解就是以结果为导向的编程。使用JSX将我们所期望的网页结构编写出来，然后React再根据JSX自动生成js代码。所以我们所编写的JSx代码，最终都会转为以调用 React.cteateElement()创建元素的代码。</p><h4 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h4><p><strong>引用babel</strong></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;React&quot;&gt;&lt;a href=&quot;#React&quot; class=&quot;headerlink&quot; title=&quot;React&quot;&gt;&lt;/a&gt;React&lt;/h2&gt;&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;React是一个用于构建用户界面的JavaScript库。主要用来写HTML页面或构建Web应用。&lt;/p&gt;&lt;p&gt;特点：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;声明式：只需要去描述UI看起来是什么样子，就和写HTML一样；&lt;/li&gt;
+&lt;li&gt;基于组件：组件是React中最重要的内容，组件表示页面中部分内容，通过组合、服用多个组件来完成这页面。&lt;/li&gt;
+&lt;li&gt;学习一次，随处使用：可以开发Web应用，移动端原生应用（react-navive）、虚拟现实应用等。&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="React" scheme="http://yoursite.com/categories/React/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Webpack5</title>

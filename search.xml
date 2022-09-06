@@ -1,39 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Vue-router</title>
-    <url>/2018/08/15/Vue-router/</url>
-    <content><![CDATA[<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><ol>
-<li><p>对于普通的网站，所有的超链接都是URL地址，所有的URL地址都对应服务器上对应的资源；</p>
-</li>
-<li><p>对于单页面应用程序来说，主要通过URL中的hash(#号)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容；所以，单页面程序中的页面跳转主要用hash实现；</p>
-</li>
-<li><p>在单页面应用程序中，这种通过hash改变来切换页面的方式，称作前端路由（区别于后端路由）；</p>
-</li>
-</ol><a id="more"></a>
-<h3 id="在-vue-中使用-vue-router"><a href="#在-vue-中使用-vue-router" class="headerlink" title="在 vue 中使用 vue-router"></a>在 vue 中使用 vue-router</h3><p>导入 vue-router 组件类库：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 1. 导入 vue-router 组件类库 --&gt;</span><br><span class="line">  &lt;script src=&quot;./lib/vue-router-2.7.0.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>使用 router-link 组件来导航</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 2. 使用 router-link 组件来导航 --&gt;</span><br><span class="line">&lt;router-link to=&quot;/login&quot;&gt;登录&lt;/router-link&gt;</span><br><span class="line">&lt;router-link to=&quot;/register&quot;&gt;注册&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
-<p>使用 router-view 组件来显示匹配到的组件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 3. 使用 router-view 组件来显示匹配到的组件 --&gt;</span><br><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
-<p>创建使用<code>Vue.extend</code>创建组件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 4.1 使用 Vue.extend 来创建登录组件</span><br><span class="line">   var login = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;h1&gt;登录组件&lt;/h1&gt;&apos;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 4.2 使用 Vue.extend 来创建注册组件</span><br><span class="line">   var register = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;h1&gt;注册组件&lt;/h1&gt;&apos;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-<p>创建一个路由 router 实例，通过 routers 属性来定义路由匹配规则</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 5. 创建一个路由 router 实例，通过 routers 属性来定义路由匹配规则</span><br><span class="line">    var router = new VueRouter(&#123;</span><br><span class="line">      routes: [</span><br><span class="line">        &#123; path: &apos;/login&apos;, component: login &#125;,</span><br><span class="line">        &#123; path: &apos;/register&apos;, component: register &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>使用 router 属性来使用路由规则</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 6. 创建 Vue 实例，得到 ViewModel</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">      el: &apos;#app&apos;,</span><br><span class="line">      router: router // 使用 router 属性来使用路由规则</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="在路由规则中定义参数"><a href="#在路由规则中定义参数" class="headerlink" title="在路由规则中定义参数"></a>在路由规则中定义参数</h3><p>在规则中定义参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; path: &apos;/register/:id&apos;, component: register &#125;</span><br></pre></td></tr></table></figure>
-<p>通过 <code>this.$route.params</code>来获取路由中的参数：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var register = Vue.extend(&#123;</span><br><span class="line">      template: &apos;&lt;h1&gt;注册组件 --- &#123;&#123;this.$route.params.id&#125;&#125;&lt;/h1&gt;&apos;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<h3 id="使用-children-属性实现路由嵌套"><a href="#使用-children-属性实现路由嵌套" class="headerlink" title="使用 children 属性实现路由嵌套"></a>使用 <code>children</code> 属性实现路由嵌套</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">   &lt;router-link to=&quot;/account&quot;&gt;Account&lt;/router-link&gt;</span><br><span class="line"></span><br><span class="line">   &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"> &lt;script&gt;</span><br><span class="line">   // 父路由中的组件</span><br><span class="line">   const account = Vue.extend(&#123;</span><br><span class="line">     template: `&lt;div&gt;</span><br><span class="line">       这是account组件</span><br><span class="line">       &lt;router-link to=&quot;/account/login&quot;&gt;login&lt;/router-link&gt; | </span><br><span class="line">       &lt;router-link to=&quot;/account/register&quot;&gt;register&lt;/router-link&gt;</span><br><span class="line">       &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">     &lt;/div&gt;`</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 子路由中的 login 组件</span><br><span class="line">   const login = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;div&gt;登录组件&lt;/div&gt;&apos;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 子路由中的 register 组件</span><br><span class="line">   const register = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;div&gt;注册组件&lt;/div&gt;&apos;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 路由实例</span><br><span class="line">   var router = new VueRouter(&#123;</span><br><span class="line">     routes: [</span><br><span class="line">       &#123; path: &apos;/&apos;, redirect: &apos;/account/login&apos; &#125;, // 使用 redirect 实现路由重定向</span><br><span class="line">       &#123;</span><br><span class="line">         path: &apos;/account&apos;,</span><br><span class="line">         component: account,</span><br><span class="line">         children: [ // 通过 children 数组属性，来实现路由的嵌套</span><br><span class="line">           &#123; path: &apos;login&apos;, component: login &#125;, // 注意，子路由的开头位置，不要加 / 路径符</span><br><span class="line">           &#123; path: &apos;register&apos;, component: register &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     ]</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 创建 Vue 实例，得到 ViewModel</span><br><span class="line">   var vm = new Vue(&#123;</span><br><span class="line">     el: &apos;#app&apos;,</span><br><span class="line">     data: &#123;&#125;,</span><br><span class="line">     methods: &#123;&#125;,</span><br><span class="line">     components: &#123;</span><br><span class="line">       account</span><br><span class="line">     &#125;,</span><br><span class="line">     router: router</span><br><span class="line">   &#125;);</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Vue-router导航守卫</title>
     <url>/2018/08/29/Vue-router%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/</url>
     <content><![CDATA[<h1 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h1><p>正如其名，<code>vue-router</code> 提供的导航守卫主要用来通过跳转或取消的方式守卫导航。有多种机会植入路由导航过程中：全局的, 单个路由独享的, 或者组件级的。</p><p> 其实，导航守卫就是路由跳转过程中的一些钩子函数，再直白点路由跳转是一个大的过程，这个大的过程分为跳转前中后等等细小的过程，在每一个过程中都有一函数，这个函数能让你操作一些其他的事儿的时机，这就是导航守卫。 </p><a id="more"></a>
@@ -91,30 +58,33 @@
       </categories>
   </entry>
   <entry>
-    <title>Vue实例的生命周期函数</title>
-    <url>/2018/08/02/Vue%E5%AE%9E%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</url>
-    <content><![CDATA[<h2 id="Vue实例的生命周期"><a href="#Vue实例的生命周期" class="headerlink" title="Vue实例的生命周期"></a>Vue实例的生命周期</h2><ul>
-<li><p>什么是生命周期：从Vue实例创建、运行、到销毁期间，总是伴随着各种各样的事件，这些事件，统称为生命周期！</p>
+    <title>Vue-router</title>
+    <url>/2018/08/15/Vue-router/</url>
+    <content><![CDATA[<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><ol>
+<li><p>对于普通的网站，所有的超链接都是URL地址，所有的URL地址都对应服务器上对应的资源；</p>
 </li>
-<li><p><a href="https://cn.vuejs.org/v2/api/#选项-生命周期钩子" target="_blank" rel="noopener">生命周期钩子</a>：就是生命周期事件的别名而已；</p>
+<li><p>对于单页面应用程序来说，主要通过URL中的hash(#号)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容；所以，单页面程序中的页面跳转主要用hash实现；</p>
 </li>
-<li><p>生命周期钩子 = 生命周期函数 = 生命周期事件</p>
-<h3 id="主要的生命周期函数分类："><a href="#主要的生命周期函数分类：" class="headerlink" title="主要的生命周期函数分类："></a>主要的生命周期函数分类：</h3></li>
-</ul><h4 id="创建期间的生命周期函数："><a href="#创建期间的生命周期函数：" class="headerlink" title="创建期间的生命周期函数："></a>创建期间的生命周期函数：</h4><ul>
-<li>beforeCreate：刚初始化一个Vue空的实例对象，这个对象上只有一些生命周期函数和默认的事件，此时，还没有初始化好 data 和 methods 的数据</li>
-<li>created：实例已经在内存中创建OK，此时 data 和 methods 已经创建OK，此时还没有开始 编译模板（如果要调用methods中的方法或者操作data中的数据，最早只能在created中操作）</li>
-<li>beforeMount：开始编辑模板 在内存中生成一个编译好的最终模板字符串，然后渲染为内存中的DOM，此时已经完成了模板的编译，但是还没有挂载到真正的页面中</li>
-<li>mounted：此时，表示整个Vue实例已经初始化完毕了，已经将编译好的模板，挂载到了页面指定的容器中显示</li>
-</ul><a id="more"></a>
-
-<h4 id="运行期间的生命周期函数："><a href="#运行期间的生命周期函数：" class="headerlink" title="运行期间的生命周期函数："></a>运行期间的生命周期函数：</h4><ul>
-<li>beforeUpdate：状态更新之前执行此函数， 此时 data 中的状态值是最新的，但是界面上显示的 数据还是旧的，因为此时还没有开始重新渲染DOM节点</li>
-<li>updated：实例更新完毕之后调用此函数，此时 data 中的状态值 和 界面上显示的数据，都已经完成了更新，界面已经被重新渲染好了！</li>
-</ul>
-<h4 id="销毁期间的生命周期函数："><a href="#销毁期间的生命周期函数：" class="headerlink" title="销毁期间的生命周期函数："></a>销毁期间的生命周期函数：</h4><ul>
-<li>beforeDestroy：实例销毁之前调用。在这一步，实例仍然完全可用。实例身上所有的data和所有的methods以及过滤器、指令….都处于可用状态，还没有真正执行销毁的过程</li>
-<li>destroyed：Vue 实例销毁后调用。已经完全被销毁，此时实例所有的数据、方法、指令过滤器都不可用了</li>
-</ul>
+<li><p>在单页面应用程序中，这种通过hash改变来切换页面的方式，称作前端路由（区别于后端路由）；</p>
+</li>
+</ol><a id="more"></a>
+<h3 id="在-vue-中使用-vue-router"><a href="#在-vue-中使用-vue-router" class="headerlink" title="在 vue 中使用 vue-router"></a>在 vue 中使用 vue-router</h3><p>导入 vue-router 组件类库：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 1. 导入 vue-router 组件类库 --&gt;</span><br><span class="line">  &lt;script src=&quot;./lib/vue-router-2.7.0.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>使用 router-link 组件来导航</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 2. 使用 router-link 组件来导航 --&gt;</span><br><span class="line">&lt;router-link to=&quot;/login&quot;&gt;登录&lt;/router-link&gt;</span><br><span class="line">&lt;router-link to=&quot;/register&quot;&gt;注册&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+<p>使用 router-view 组件来显示匹配到的组件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- 3. 使用 router-view 组件来显示匹配到的组件 --&gt;</span><br><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
+<p>创建使用<code>Vue.extend</code>创建组件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 4.1 使用 Vue.extend 来创建登录组件</span><br><span class="line">   var login = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;h1&gt;登录组件&lt;/h1&gt;&apos;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 4.2 使用 Vue.extend 来创建注册组件</span><br><span class="line">   var register = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;h1&gt;注册组件&lt;/h1&gt;&apos;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<p>创建一个路由 router 实例，通过 routers 属性来定义路由匹配规则</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 5. 创建一个路由 router 实例，通过 routers 属性来定义路由匹配规则</span><br><span class="line">    var router = new VueRouter(&#123;</span><br><span class="line">      routes: [</span><br><span class="line">        &#123; path: &apos;/login&apos;, component: login &#125;,</span><br><span class="line">        &#123; path: &apos;/register&apos;, component: register &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>使用 router 属性来使用路由规则</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 6. 创建 Vue 实例，得到 ViewModel</span><br><span class="line">    var vm = new Vue(&#123;</span><br><span class="line">      el: &apos;#app&apos;,</span><br><span class="line">      router: router // 使用 router 属性来使用路由规则</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="在路由规则中定义参数"><a href="#在路由规则中定义参数" class="headerlink" title="在路由规则中定义参数"></a>在路由规则中定义参数</h3><p>在规则中定义参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; path: &apos;/register/:id&apos;, component: register &#125;</span><br></pre></td></tr></table></figure>
+<p>通过 <code>this.$route.params</code>来获取路由中的参数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var register = Vue.extend(&#123;</span><br><span class="line">      template: &apos;&lt;h1&gt;注册组件 --- &#123;&#123;this.$route.params.id&#125;&#125;&lt;/h1&gt;&apos;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="使用-children-属性实现路由嵌套"><a href="#使用-children-属性实现路由嵌套" class="headerlink" title="使用 children 属性实现路由嵌套"></a>使用 <code>children</code> 属性实现路由嵌套</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">   &lt;router-link to=&quot;/account&quot;&gt;Account&lt;/router-link&gt;</span><br><span class="line"></span><br><span class="line">   &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"> &lt;script&gt;</span><br><span class="line">   // 父路由中的组件</span><br><span class="line">   const account = Vue.extend(&#123;</span><br><span class="line">     template: `&lt;div&gt;</span><br><span class="line">       这是account组件</span><br><span class="line">       &lt;router-link to=&quot;/account/login&quot;&gt;login&lt;/router-link&gt; | </span><br><span class="line">       &lt;router-link to=&quot;/account/register&quot;&gt;register&lt;/router-link&gt;</span><br><span class="line">       &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">     &lt;/div&gt;`</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 子路由中的 login 组件</span><br><span class="line">   const login = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;div&gt;登录组件&lt;/div&gt;&apos;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 子路由中的 register 组件</span><br><span class="line">   const register = Vue.extend(&#123;</span><br><span class="line">     template: &apos;&lt;div&gt;注册组件&lt;/div&gt;&apos;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 路由实例</span><br><span class="line">   var router = new VueRouter(&#123;</span><br><span class="line">     routes: [</span><br><span class="line">       &#123; path: &apos;/&apos;, redirect: &apos;/account/login&apos; &#125;, // 使用 redirect 实现路由重定向</span><br><span class="line">       &#123;</span><br><span class="line">         path: &apos;/account&apos;,</span><br><span class="line">         component: account,</span><br><span class="line">         children: [ // 通过 children 数组属性，来实现路由的嵌套</span><br><span class="line">           &#123; path: &apos;login&apos;, component: login &#125;, // 注意，子路由的开头位置，不要加 / 路径符</span><br><span class="line">           &#123; path: &apos;register&apos;, component: register &#125;</span><br><span class="line">         ]</span><br><span class="line">       &#125;</span><br><span class="line">     ]</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   // 创建 Vue 实例，得到 ViewModel</span><br><span class="line">   var vm = new Vue(&#123;</span><br><span class="line">     el: &apos;#app&apos;,</span><br><span class="line">     data: &#123;&#125;,</span><br><span class="line">     methods: &#123;&#125;,</span><br><span class="line">     components: &#123;</span><br><span class="line">       account</span><br><span class="line">     &#125;,</span><br><span class="line">     router: router</span><br><span class="line">   &#125;);</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Vue</category>
@@ -213,6 +183,108 @@
 <h4 id="自定义私有指令"><a href="#自定义私有指令" class="headerlink" title="自定义私有指令"></a>自定义私有指令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var app4 = new Vue(&#123;</span><br><span class="line">    el: &apos;#app-4&apos;,</span><br><span class="line">    data: &#123;&#125;,</span><br><span class="line">	directives: &#123;</span><br><span class="line">        focus: &#123;</span><br><span class="line">            // 指令的定义</span><br><span class="line">            inserted: function(el) &#123;</span><br><span class="line">                el.focus()</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 使用自定义元素 </p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-focus placeholder=&quot;请输入筛选条件&quot; v-model=&quot;searchtext&quot; /&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>react复习笔记</title>
+    <url>/2022/09/06/react%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>React是一个用于构建用户界面的JavaScript库。主要用来写HTML页面或构建Web应用。</p><p>特点：</p><ul>
+<li>声明式：只需要去描述UI看起来是什么样子，就和写HTML一样；</li>
+<li>基于组件：组件是React中最重要的内容，组件表示页面中部分内容，通过组合、服用多个组件来完成这页面。</li>
+<li>学习一次，随处使用：可以开发Web应用，移动端原生应用（react-navive）、虚拟现实应用等。</li>
+</ul><a id="more"></a>
+
+
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><h4 id="初始化项目："><a href="#初始化项目：" class="headerlink" title="初始化项目："></a>初始化项目：</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<h4 id="安装React"><a href="#安装React" class="headerlink" title="安装React"></a>安装React</h4><p>在需要安装的文件夹爱中打开终端，输入命令安装</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i react react-dom react-scripts -D</span><br></pre></td></tr></table></figure>
+<h4 id="引入React"><a href="#引入React" class="headerlink" title="引入React"></a>引入React</h4><p>引入react和react-dom 两个js文件，注意文件顺序。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;script src=&quot;./node_modules/react/umd/react.development.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;./node_modules/react-dom/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="创建React元素"><a href="#创建React元素" class="headerlink" title="创建React元素"></a>创建React元素</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const title=React.createElement(&apos;h1&apos;,null,&apos;hello React&apos;)</span><br></pre></td></tr></table></figure>
+<h4 id="创建根容器"><a href="#创建根容器" class="headerlink" title="创建根容器"></a>创建根容器</h4><p>首先在页面中创建根元素的容器，根容器的命名可以自己随意设定</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const root = ReactDOM.createRoot(document.querySelector(&apos;#root&apos;))</span><br></pre></td></tr></table></figure>
+<h4 id="渲染React-元素到页面中"><a href="#渲染React-元素到页面中" class="headerlink" title="渲染React 元素到页面中"></a>渲染React 元素到页面中</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root.render(title)</span><br></pre></td></tr></table></figure>
+<p>React.createElement( TagName, Attribute, RootNode )</p>
+<p>ReactDOM.createRoot(targetDOM)</p>
+<p>render( el )</p>
+<h3 id="三个API"><a href="#三个API" class="headerlink" title="三个API"></a>三个API</h3><h4 id="React-createElement"><a href="#React-createElement" class="headerlink" title="React.createElement"></a>React.createElement</h4><p>用于创建React元素，React元素无法修改</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const button =React.createElement(&apos;button&apos;,&#123;</span><br><span class="line">id:&apos;btn&apos;,</span><br><span class="line">type:&apos;button&apos;,</span><br><span class="line">className:&apos;hello&apos;,</span><br><span class="line">onClick:()=&gt;&#123;alert(&apos;Clicked&apos;)&#125;</span><br><span class="line">&#125;,&apos;Click Me&apos;);</span><br><span class="line">const div=React.createElement(&apos;div&apos;,null,&apos;Content&apos;,button)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>html标签必须小写</li>
+<li>标签中的属性属性名：属性值</li>
+<li>类的属性建议使用className，和js中的class关键字作区分</li>
+<li>在设置事件属性时，属性名需修改为小驼峰命名法，属性值为函数</li>
+<li>元素内容可以是文本内容，也可以加上子标签</li>
+<li>React创建的元素一旦创建不可修改</li>
+</ul>
+<h4 id="ReactDOM-createRoot"><a href="#ReactDOM-createRoot" class="headerlink" title="ReactDOM.createRoot"></a>ReactDOM.createRoot</h4><p>创建React的根容器，用于放置React元素</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const root = ReactDOM.createRoot(document.querySelector(&apos;#root&apos;))</span><br></pre></td></tr></table></figure>
+<h4 id="render"><a href="#render" class="headerlink" title="render"></a>render</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">root.render(div)</span><br></pre></td></tr></table></figure>
+<p>当首次调用时，容器节点里的所有DOM元素都会替换，后续的调用则会使用React 的DOM差分算法（DOM diffing algorithm）进行高效的更新。</p>
+<p>不会修改容器节点（只会修改容器的子节点)。可以在不覆盖现有子节点的情况下，将组建插入已有的DOM节点中。</p>
+<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><p>JSX是JavaScript XML的简写，是js的语法扩展，JSX使得我们可以以类似于html的形式去使用js。JSX便是React中声明式编程的体现方式。声明式编程，简单理解就是以结果为导向的编程。使用JSX将我们所期望的网页结构编写出来，然后React再根据JSX自动生成js代码。所以我们所编写的JSx代码，最终都会转为以调用 React.cteateElement()创建元素的代码。</p>
+<h4 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h4><p><strong>引用babel</strong></p>
+]]></content>
+      <categories>
+        <category>React</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Vue计算属性</title>
+    <url>/2018/08/16/Vue%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p> 模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。例如： </p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;example&quot;&gt;</span><br><span class="line">  &#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+<p>在这个地方，模板不再是简单的声明式逻辑。你必须看一段时间才能意识到，这里是想要显示变量 <code>message</code> 的翻转字符串。当你想要在模板中的多处包含此翻转字符串时，就会更加难以处理。</p>
+<p>所以，对于任何复杂逻辑，你都应当使用<strong>计算属性</strong>。 </p>
+<p>表达式里面包含了3个操作，有时候可能会更加复杂，这时我们可以使用计算属性。如下 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;&#123;reversedText&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return&#123;</span><br><span class="line">                text: &apos;123,456&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        computed: &#123;</span><br><span class="line">            reversedText: function () &#123;</span><br><span class="line">                //这里的this指向的是当前的vue实例</span><br><span class="line">                return this.text.split(&apos;,&apos;).reverse().join(&apos;,&apos;);  //如果这两的text是后台接受的数据，最好加个判断数据为不为空</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p> 所有计算属性都以函数的形式写在<code>Vue</code>实例内的<code>computed</code>选项内，最终返回计算后的结果 </p>
+<h3 id="计算属性用法"><a href="#计算属性用法" class="headerlink" title="计算属性用法"></a>计算属性用法</h3><p>在一个计算属性里可以完成各种复杂的逻辑，包括逻辑运算、函数调用等，只要最终返回一个结果就可以。除了上面的简单的用法，计算属性还可以依赖多个<code>vue</code>实例的数据，只要其中任意一个数据变化，计算属性就会重新执行，视图也会更新，例如下面的例子展示的是购物车内两个包裹的物品总价 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;prices&quot;&gt;</span><br><span class="line">         总价： &#123;&#123;prices&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">       // &lt;!--购物车总价--&gt;</span><br><span class="line">        var prices = new Vue(&#123;</span><br><span class="line">            el: &quot;#prices&quot;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                package1: [</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;华为mate20pro&quot;,</span><br><span class="line">                    price: 4566,</span><br><span class="line">                    count: 2</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;华为p30&quot;,</span><br><span class="line">                    price: 4166,</span><br><span class="line">                    count: 2</span><br><span class="line">                &#125;,</span><br><span class="line">                ],</span><br><span class="line">                package2: [</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;苹果&quot;,</span><br><span class="line">                    price: 30,</span><br><span class="line">                    count: 2</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;香蕉&quot;,</span><br><span class="line">                    price: 2,</span><br><span class="line">                    count: 20</span><br><span class="line">                &#125;,</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                prices: function () &#123;</span><br><span class="line">                    var prices = 0;</span><br><span class="line">                    debugger</span><br><span class="line">                    for (var i = 0; i &lt; this.package1.length; i++) &#123;</span><br><span class="line">                        prices += this.package1[i].price * this.package1[i].count;</span><br><span class="line">                    &#125;</span><br><span class="line">                    for (var i = 0; i &lt; this.package2.length; i++) &#123;</span><br><span class="line">                        prices += this.package2[i].price * this.package2[i].count;</span><br><span class="line">                    &#125;</span><br><span class="line">                    return prices;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p> 当package1或package2中的商品发生变化，比如购买数量变化或者增删商品时，计算属性prices就会自动更新，视图中的总价也会自动变化<br>每个计算属性都包含一个getter和setter，上面的例子都是计算属性默认用法，只是利用了getter来读取。在你需要时，也可以提供一个setter函数，当手动修改计算属性的值就像修改一个普通数据那样，就会触发setter函数，执行一些自定义的操作。 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--setter--&gt;</span><br><span class="line">        &lt;div id=&quot;setter&quot;&gt;</span><br><span class="line">         姓名： &#123;&#123;fullName&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"> var setter = new Vue(&#123;</span><br><span class="line">            el: &quot;setter&quot;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                firstName: &apos;Jack&apos;,</span><br><span class="line">                lastName:&apos;Green&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                fullName: &#123;</span><br><span class="line">                    //getter,用于读取</span><br><span class="line">                    get: function ()</span><br><span class="line">                    &#123;</span><br><span class="line">                        return this.firstName + &apos; &apos; + this.lastName</span><br><span class="line">                    &#125;,</span><br><span class="line">                    //setter，写入时触发</span><br><span class="line">                    set: function (newValue)</span><br><span class="line">                    &#123;</span><br><span class="line">                        var names = newValue.split(&apos; &apos;);</span><br><span class="line">                        this.firstName = names[0];</span><br><span class="line">                        this.lastName = names[1];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p> 当执行 setter.fullName=’Join Doe’时候，setter就会被调用，数据firstName和lastName都会相对更新，视图同样也会更新<br>    绝大多情况下，我们只会使用默认的getter方法来读取一个计算属性，在业务中很少使用到setter，所以在声明一个计算属性的时候，可以直接使用默认的写法，不必将getter和setter都声明<br>   计算属性除啦以上简单的文本插值外，还经常用于动态的设置元素的样式名称class和内联样式style，当使用组件时，计算属性也经常用来动态传递props以后，我会慢慢介绍到<br>计算属性还有两个很使用的小技巧很容易被忽略，一是计算属性可以依赖其他计算属性，二是计算属性不仅可以依赖当前Vue实例的数据，还可以依赖其他Vue实例的数据 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app1&quot;&gt;&lt;/div&gt;</span><br><span class="line"> &lt;div id=&quot;app2&quot;&gt;</span><br><span class="line">         &#123;&#123;reversedText&#125;&#125;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">        var app1 = new Vue(&#123;</span><br><span class="line">            el: &quot;#app1&quot;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                text: &quot;123,456&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        var app2 = new Vue(&#123;</span><br><span class="line">            el: &quot;#app2&quot;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                reversedText: function () &#123;</span><br><span class="line">                    //这里是依赖app1实例中的数据text</span><br><span class="line">                    return app1.text.split(&apos;,&apos;).reverse().join(&apos;,&apos;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p> 这里我们创建了两个vue实例app1和app2，在app2的计算属性reversedText中，依赖的是app1的数据text，所以当text变化时，实例app2的计算属性也会变化，这样的用法以后用到的也会比较多，尤其是在多人协同开发时很常用，以为你写的组件所用到的数据需要依赖他人的组件提供，以后接触的多了就会慢慢的意识到这一点。 </p>
+<h3 id="计算属性缓存"><a href="#计算属性缓存" class="headerlink" title="计算属性缓存"></a><strong>计算属性缓存</strong></h3><p> 其实细心的话就会发现，调用methods里的方法也能实现和计算属性一样的效果，甚至有的方法还能接收参数，使用起来更加的灵活，既然使用methods就可以实现，那为什么还需要计算属性呢？原因就是计算属性是基于他的依赖缓存的。一个计算属性所依赖的数据发生变化时，他才会重新取值，<br>所以依赖的text只要不改变。计算属性也就不更新 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">computed：&#123;</span><br><span class="line">now：function()</span><br><span class="line"> 	&#123;</span><br><span class="line">		return Date.now()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 这里的<code>Date.now()</code>不是响应式依赖，所以计算属性<code>now</code> 不会更新，但是<code>methods</code>则不同，只要重新渲染他就会被调用，因此函数也会被执行。<br>使用计算属性还是<code>methods</code>取决于你是否需要缓存，当遍历大数组和做大量计算时，应当使用计算属性，除非你不希望得到缓存 </p>
+<p><code>methods</code>和计算属性<code>computed</code> 实现的最终效果其实是一样的，然而，不同的是计算属性是基于它们的响应式依赖进行缓存的。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 数据  没有发生改变，多次访问 计算属性会立即返回之前的计算结果，而不必再次执行函数。相比之下，每当触发重新渲染时，调用<code>methods</code>方法将总会再次执行函数。</p>
+<p>计算属性的求值结果会被缓存起来，方便下次直接使用，如果计算属性方法中所依赖的任何数据都没有发生过改变，则不会重新对计算属性求值。</p>
+]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Vue实例的生命周期函数</title>
+    <url>/2018/08/02/Vue%E5%AE%9E%E4%BE%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h2 id="Vue实例的生命周期"><a href="#Vue实例的生命周期" class="headerlink" title="Vue实例的生命周期"></a>Vue实例的生命周期</h2><ul>
+<li><p>什么是生命周期：从Vue实例创建、运行、到销毁期间，总是伴随着各种各样的事件，这些事件，统称为生命周期！</p>
+</li>
+<li><p><a href="https://cn.vuejs.org/v2/api/#选项-生命周期钩子" target="_blank" rel="noopener">生命周期钩子</a>：就是生命周期事件的别名而已；</p>
+</li>
+<li><p>生命周期钩子 = 生命周期函数 = 生命周期事件</p>
+<h3 id="主要的生命周期函数分类："><a href="#主要的生命周期函数分类：" class="headerlink" title="主要的生命周期函数分类："></a>主要的生命周期函数分类：</h3></li>
+</ul><h4 id="创建期间的生命周期函数："><a href="#创建期间的生命周期函数：" class="headerlink" title="创建期间的生命周期函数："></a>创建期间的生命周期函数：</h4><ul>
+<li>beforeCreate：刚初始化一个Vue空的实例对象，这个对象上只有一些生命周期函数和默认的事件，此时，还没有初始化好 data 和 methods 的数据</li>
+<li>created：实例已经在内存中创建OK，此时 data 和 methods 已经创建OK，此时还没有开始 编译模板（如果要调用methods中的方法或者操作data中的数据，最早只能在created中操作）</li>
+<li>beforeMount：开始编辑模板 在内存中生成一个编译好的最终模板字符串，然后渲染为内存中的DOM，此时已经完成了模板的编译，但是还没有挂载到真正的页面中</li>
+<li>mounted：此时，表示整个Vue实例已经初始化完毕了，已经将编译好的模板，挂载到了页面指定的容器中显示</li>
+</ul><a id="more"></a>
+
+<h4 id="运行期间的生命周期函数："><a href="#运行期间的生命周期函数：" class="headerlink" title="运行期间的生命周期函数："></a>运行期间的生命周期函数：</h4><ul>
+<li>beforeUpdate：状态更新之前执行此函数， 此时 data 中的状态值是最新的，但是界面上显示的 数据还是旧的，因为此时还没有开始重新渲染DOM节点</li>
+<li>updated：实例更新完毕之后调用此函数，此时 data 中的状态值 和 界面上显示的数据，都已经完成了更新，界面已经被重新渲染好了！</li>
+</ul>
+<h4 id="销毁期间的生命周期函数："><a href="#销毁期间的生命周期函数：" class="headerlink" title="销毁期间的生命周期函数："></a>销毁期间的生命周期函数：</h4><ul>
+<li>beforeDestroy：实例销毁之前调用。在这一步，实例仍然完全可用。实例身上所有的data和所有的methods以及过滤器、指令….都处于可用状态，还没有真正执行销毁的过程</li>
+<li>destroyed：Vue 实例销毁后调用。已经完全被销毁，此时实例所有的数据、方法、指令过滤器都不可用了</li>
+</ul>
 ]]></content>
       <categories>
         <category>Vue</category>
@@ -502,33 +574,6 @@
 ]]></content>
       <categories>
         <category>TypeScript</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Vue计算属性</title>
-    <url>/2018/08/16/Vue%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p> 模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。例如： </p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;example&quot;&gt;</span><br><span class="line">  &#123;&#123; message.split(&apos;&apos;).reverse().join(&apos;&apos;) &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
-
-<p>在这个地方，模板不再是简单的声明式逻辑。你必须看一段时间才能意识到，这里是想要显示变量 <code>message</code> 的翻转字符串。当你想要在模板中的多处包含此翻转字符串时，就会更加难以处理。</p>
-<p>所以，对于任何复杂逻辑，你都应当使用<strong>计算属性</strong>。 </p>
-<p>表达式里面包含了3个操作，有时候可能会更加复杂，这时我们可以使用计算属性。如下 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;&#123;reversedText&#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return&#123;</span><br><span class="line">                text: &apos;123,456&apos;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        computed: &#123;</span><br><span class="line">            reversedText: function () &#123;</span><br><span class="line">                //这里的this指向的是当前的vue实例</span><br><span class="line">                return this.text.split(&apos;,&apos;).reverse().join(&apos;,&apos;);  //如果这两的text是后台接受的数据，最好加个判断数据为不为空</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p> 所有计算属性都以函数的形式写在<code>Vue</code>实例内的<code>computed</code>选项内，最终返回计算后的结果 </p>
-<h3 id="计算属性用法"><a href="#计算属性用法" class="headerlink" title="计算属性用法"></a>计算属性用法</h3><p>在一个计算属性里可以完成各种复杂的逻辑，包括逻辑运算、函数调用等，只要最终返回一个结果就可以。除了上面的简单的用法，计算属性还可以依赖多个<code>vue</code>实例的数据，只要其中任意一个数据变化，计算属性就会重新执行，视图也会更新，例如下面的例子展示的是购物车内两个包裹的物品总价 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;prices&quot;&gt;</span><br><span class="line">         总价： &#123;&#123;prices&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"> &lt;script&gt;</span><br><span class="line">       // &lt;!--购物车总价--&gt;</span><br><span class="line">        var prices = new Vue(&#123;</span><br><span class="line">            el: &quot;#prices&quot;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                package1: [</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;华为mate20pro&quot;,</span><br><span class="line">                    price: 4566,</span><br><span class="line">                    count: 2</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;华为p30&quot;,</span><br><span class="line">                    price: 4166,</span><br><span class="line">                    count: 2</span><br><span class="line">                &#125;,</span><br><span class="line">                ],</span><br><span class="line">                package2: [</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;苹果&quot;,</span><br><span class="line">                    price: 30,</span><br><span class="line">                    count: 2</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    name: &quot;香蕉&quot;,</span><br><span class="line">                    price: 2,</span><br><span class="line">                    count: 20</span><br><span class="line">                &#125;,</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                prices: function () &#123;</span><br><span class="line">                    var prices = 0;</span><br><span class="line">                    debugger</span><br><span class="line">                    for (var i = 0; i &lt; this.package1.length; i++) &#123;</span><br><span class="line">                        prices += this.package1[i].price * this.package1[i].count;</span><br><span class="line">                    &#125;</span><br><span class="line">                    for (var i = 0; i &lt; this.package2.length; i++) &#123;</span><br><span class="line">                        prices += this.package2[i].price * this.package2[i].count;</span><br><span class="line">                    &#125;</span><br><span class="line">                    return prices;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p> 当package1或package2中的商品发生变化，比如购买数量变化或者增删商品时，计算属性prices就会自动更新，视图中的总价也会自动变化<br>每个计算属性都包含一个getter和setter，上面的例子都是计算属性默认用法，只是利用了getter来读取。在你需要时，也可以提供一个setter函数，当手动修改计算属性的值就像修改一个普通数据那样，就会触发setter函数，执行一些自定义的操作。 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!--setter--&gt;</span><br><span class="line">        &lt;div id=&quot;setter&quot;&gt;</span><br><span class="line">         姓名： &#123;&#123;fullName&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"> var setter = new Vue(&#123;</span><br><span class="line">            el: &quot;setter&quot;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                firstName: &apos;Jack&apos;,</span><br><span class="line">                lastName:&apos;Green&apos;</span><br><span class="line">            &#125;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                fullName: &#123;</span><br><span class="line">                    //getter,用于读取</span><br><span class="line">                    get: function ()</span><br><span class="line">                    &#123;</span><br><span class="line">                        return this.firstName + &apos; &apos; + this.lastName</span><br><span class="line">                    &#125;,</span><br><span class="line">                    //setter，写入时触发</span><br><span class="line">                    set: function (newValue)</span><br><span class="line">                    &#123;</span><br><span class="line">                        var names = newValue.split(&apos; &apos;);</span><br><span class="line">                        this.firstName = names[0];</span><br><span class="line">                        this.lastName = names[1];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p> 当执行 setter.fullName=’Join Doe’时候，setter就会被调用，数据firstName和lastName都会相对更新，视图同样也会更新<br>    绝大多情况下，我们只会使用默认的getter方法来读取一个计算属性，在业务中很少使用到setter，所以在声明一个计算属性的时候，可以直接使用默认的写法，不必将getter和setter都声明<br>   计算属性除啦以上简单的文本插值外，还经常用于动态的设置元素的样式名称class和内联样式style，当使用组件时，计算属性也经常用来动态传递props以后，我会慢慢介绍到<br>计算属性还有两个很使用的小技巧很容易被忽略，一是计算属性可以依赖其他计算属性，二是计算属性不仅可以依赖当前Vue实例的数据，还可以依赖其他Vue实例的数据 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;app1&quot;&gt;&lt;/div&gt;</span><br><span class="line"> &lt;div id=&quot;app2&quot;&gt;</span><br><span class="line">         &#123;&#123;reversedText&#125;&#125;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">        var app1 = new Vue(&#123;</span><br><span class="line">            el: &quot;#app1&quot;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                text: &quot;123,456&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        var app2 = new Vue(&#123;</span><br><span class="line">            el: &quot;#app2&quot;,</span><br><span class="line">            computed: &#123;</span><br><span class="line">                reversedText: function () &#123;</span><br><span class="line">                    //这里是依赖app1实例中的数据text</span><br><span class="line">                    return app1.text.split(&apos;,&apos;).reverse().join(&apos;,&apos;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p> 这里我们创建了两个vue实例app1和app2，在app2的计算属性reversedText中，依赖的是app1的数据text，所以当text变化时，实例app2的计算属性也会变化，这样的用法以后用到的也会比较多，尤其是在多人协同开发时很常用，以为你写的组件所用到的数据需要依赖他人的组件提供，以后接触的多了就会慢慢的意识到这一点。 </p>
-<h3 id="计算属性缓存"><a href="#计算属性缓存" class="headerlink" title="计算属性缓存"></a><strong>计算属性缓存</strong></h3><p> 其实细心的话就会发现，调用methods里的方法也能实现和计算属性一样的效果，甚至有的方法还能接收参数，使用起来更加的灵活，既然使用methods就可以实现，那为什么还需要计算属性呢？原因就是计算属性是基于他的依赖缓存的。一个计算属性所依赖的数据发生变化时，他才会重新取值，<br>所以依赖的text只要不改变。计算属性也就不更新 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">computed：&#123;</span><br><span class="line">now：function()</span><br><span class="line"> 	&#123;</span><br><span class="line">		return Date.now()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 这里的<code>Date.now()</code>不是响应式依赖，所以计算属性<code>now</code> 不会更新，但是<code>methods</code>则不同，只要重新渲染他就会被调用，因此函数也会被执行。<br>使用计算属性还是<code>methods</code>取决于你是否需要缓存，当遍历大数组和做大量计算时，应当使用计算属性，除非你不希望得到缓存 </p>
-<p><code>methods</code>和计算属性<code>computed</code> 实现的最终效果其实是一样的，然而，不同的是计算属性是基于它们的响应式依赖进行缓存的。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 数据  没有发生改变，多次访问 计算属性会立即返回之前的计算结果，而不必再次执行函数。相比之下，每当触发重新渲染时，调用<code>methods</code>方法将总会再次执行函数。</p>
-<p>计算属性的求值结果会被缓存起来，方便下次直接使用，如果计算属性方法中所依赖的任何数据都没有发生过改变，则不会重新对计算属性求值。</p>
-]]></content>
-      <categories>
-        <category>Vue</category>
       </categories>
   </entry>
   <entry>
