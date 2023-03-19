@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="李凤伟的小站" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+  <meta name="description" content="整理tcp与udp的区别tcp：面向连接，三次握手建立连接，四次挥手解除连接udp：无连接，发送数据之前不需要建立连接，会带来高效的传输效率，也导致无法确保数据发送成功tcp：可靠通信方式，通过tcp连接发送的数据支持超时重传，数据校验，确保数据无差错，不丢失，不重复，按序到达udp：由于无需连接，将会以最大速度传输，但不保证可靠交付，会出现丢失，重复问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="李凤伟的小站">
+<meta property="og:url" content="http://yoursite.com/2023/03/20/整理面试题/index.html">
+<meta property="og:site_name" content="李凤伟的小站">
+<meta property="og:description" content="整理tcp与udp的区别tcp：面向连接，三次握手建立连接，四次挥手解除连接udp：无连接，发送数据之前不需要建立连接，会带来高效的传输效率，也导致无法确保数据发送成功tcp：可靠通信方式，通过tcp连接发送的数据支持超时重传，数据校验，确保数据无差错，不丢失，不重复，按序到达udp：由于无需连接，将会以最大速度传输，但不保证可靠交付，会出现丢失，重复问题。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1ccbdee4f468444dae832fb574ec733d.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81NjUwNTg0NQ==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:updated_time" content="2023-03-19T16:14:42.101Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="李凤伟的小站">
+<meta name="twitter:description" content="整理tcp与udp的区别tcp：面向连接，三次握手建立连接，四次挥手解除连接udp：无连接，发送数据之前不需要建立连接，会带来高效的传输效率，也导致无法确保数据发送成功tcp：可靠通信方式，通过tcp连接发送的数据支持超时重传，数据校验，确保数据无差错，不丢失，不重复，按序到达udp：由于无需连接，将会以最大速度传输，但不保证可靠交付，会出现丢失，重复问题。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/1ccbdee4f468444dae832fb574ec733d.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81NjUwNTg0NQ==,size_16,color_FFFFFF,t_70#pic_center">
+
+<link rel="canonical" href="http://yoursite.com/2023/03/20/整理面试题/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title> | 李凤伟的小站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+
+  <!-- 爆炸红心效果 -->
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/firework.js"></script>
+<!-- 添加动态线条背景 -->
+
+<script type="text/javascript" color="0,0,0" opacity='1.0'  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+   <a href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">李凤伟的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/20/整理面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WayneLee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="李凤伟的小站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-20 00:16:19 / 修改时间：00:14:42" itemprop="dateCreated datePublished" datetime="2023-03-20T00:16:19+08:00">2023-03-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="整理"><a href="#整理" class="headerlink" title="整理"></a>整理</h1><h2 id="tcp与udp的区别"><a href="#tcp与udp的区别" class="headerlink" title="tcp与udp的区别"></a>tcp与udp的区别</h2><p>tcp：面向连接，三次握手建立连接，四次挥手解除连接</p><p>udp：无连接，发送数据之前不需要建立连接，会带来高效的传输效率，也导致无法确保数据发送成功</p><p>tcp：可靠通信方式，通过tcp连接发送的数据支持超时重传，数据校验，确保数据无差错，不丢失，不重复，按序到达</p><p>udp：由于无需连接，将会以最大速度传输，但不保证可靠交付，会出现丢失，重复问题。</p><a id="more"></a>
+
+
+
+<p>tcp：面向字节流，tcp把数据看成一连串的无结构字节流，由于连接的问题，网络出现波动，连接可能出现响应的问题</p>
+<p>udp：面向报文，udp没有拥塞控制，因此网络出现拥塞，不会使源主机的发送速率降低</p>
+<p>每一条tcp只能是点到点</p>
+<p>udp不建立连接，所以可以支持一对一，一对多，多对一，多对多的交互通信，可以同时接受多个人的包</p>
+<p>tcp需要建立连接，首部开销20字节比udp的8个字节大</p>
+<p>tcp逻辑通信信道是全双工的可靠信道</p>
+<p>udp是不可靠信道</p>
+<h2 id="for-in-—–-for-of"><a href="#for-in-—–-for-of" class="headerlink" title="for in —– for of"></a>for in —– for of</h2><p>循环数组 ：forin是每一项的下标  forof是每一项的值</p>
+<p>循环对象：for in可以遍历对象  forof不行  没有iterator接口</p>
+<h2 id="foreach-—–map"><a href="#foreach-—–map" class="headerlink" title="foreach —–map"></a>foreach —–map</h2><p>foreach无返回值  map返回一个新数组并和与其他方法连接在一起</p>
+<p>foreach回调里面可以修改原数组</p>
+<p>foreach执行速度快于map（foreach函数签名中包含了参数和上下文，map会返回新数组，数组创建和赋值会导致分配内存空间，因此带来性能开销）</p>
+<h2 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h2><p>浅拷贝基本类型就复制值，引用类型只复制某个对象的指针（内存地址），新旧对象共享一块内存，其中一个改变就会影响到另一个</p>
+<p>深拷贝复制创建一个一模一样的对象，不会拷贝引用</p>
+<p>浅拷贝：object.asssign()方法，数组splice、concat方法，…扩展运算符</p>
+<p>深拷贝：lodash的cloneDeep方法，JSON.parse和stringify转换</p>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><p>可以用for循环或者foreach遍历数组  定义一个新数组 然后用新数组加上indexof方法来查找每一项 如果等于-1 则表示新数组里面没有一样的 就把这个push进新数组里面（也可以用数组的includes方法判断新数组是否包含了原数组的某个元素 包含返回true 不包含返回false false的时候push进去）</p>
+<p>再就是用…new Set(arr)来判断</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>声明局部变量供外部使用，防止变量污染全局，通过某种方式获取函数内部变量暴露给函数外部，声明在一个函数中的函数，叫闭包函数。（函数外部无法读取函数内部的局部变量，只有函数内部的子函数可以读取局部变量。又需要使用函数内部的局部变量）、</p>
+<p>让变量始终保持在内存中，不会在调用后清除</p>
+<p>由于闭包会是函数中的变量被常驻在内存中，内存消耗极大，所有不能滥用闭包，否则会造成性能问题，ie会内存泄露</p>
+<p>退出函数之前，将不使用的局部变量删除</p>
+<h2 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h2><p>如果存在大量未被释放的内存（堆栈上下文）页面性能会变得很慢，当某些代码操作不能被合理释放，会造成内存泄露，计量减少闭包使用</p>
+<p>js具有垃圾回收机制，垃圾收集器定期（周期性）找出那些不在继续使用的变量，然后释放内存、</p>
+<p>标记清除：当变量进入执行环境，标记为进入环境，离开执行环境，标记为离开环境 ，会销毁那些带标记的值，并回收他们所占有的内存空间。</p>
+<p>引用计数：内存被占用一次，计数累加一次，移除占用就减一，减到0就回收。</p>
+<p>应该手动释放取消内存的占用</p>
+<h3 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h3><p>程序运行需要内存，对于持续运行的服务进程，必须及时释放不再用到的内存，否则占用越来越高，影响系统性能，导致进程崩溃，</p>
+<p>由于使用未声明的变量，而意外的创建了一个全局变量，是变量一直留在内存中无法被回收。</p>
+<p>设置定时器 忘记取消，循环函数有对外部变量的引用的话，那么这个变量会被一直留在内存中。</p>
+<p>获取一个dom元素的引用，后面如果元素被删除，由于一直保留了对这个元素的引用，所以也无法被回收</p>
+<p>不合理的使用闭包</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>class继承</p>
+<p>原型链继承：父类的实例作为子类的原型</p>
+<p>构造函数继承： 使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类  call调用父类</p>
+<p>组合继承：前两种组合</p>
+<h2 id="this指向"><a href="#this指向" class="headerlink" title="this指向"></a>this指向</h2><p>作为普通函数被调用 this指向window （严格模式指向underfind）</p>
+<p>函数作为对象的方法被调用 this指向该对象</p>
+<p>构造器调用 this指向返回的这个对象实例</p>
+<p>箭头函数自身不绑定this 在作用域链上一层继承this 绑定到最近的一层对象</p>
+<p>apply bind call都可以指定调用函数的this指向</p>
+<p>call：（要改变的this指向，参数1，参数2，……..）</p>
+<p>apply：（要改变的this指向，[参数1，参数2，…….]）</p>
+<p>bind：方法返回一个函数，有需要在调用执行，也是参数列表的形式传递参数。</p>
+<h2 id="eventLoop"><a href="#eventLoop" class="headerlink" title="eventLoop"></a>eventLoop</h2><p>遇到异步事件不会一直等待其返回结果，而是将事件挂起，继续执行执行栈的其他任务，异步任务会进入Event Table并注册回调函数，等到指定的事件完成并返回结果加入到另一个事件队列（将回调函数移入到Event Queue），加入事件队列不会立即执行其回调，而是等待当前执行栈中的所有任务执行完毕，主线程闲置的时候再去查找事件队列中是否有任务，先看微任务队列，有任务就将微任务队列中所有任务依次执行。直到微任务为空，之后再检查宏任务队列，如果有任务取出第一个宏任务加入到执行栈中执行清空，  从里面取出排在第一个的事件，把这个事件对应的回调放入执行栈中，执行，再去执行微任务，然后在取宏任务清微任务，如此反复循环。</p>
+<p>微任务有：promise回调，node中的process.nexttick，对DOM监听的MutationObserver</p>
+<p>宏任务包括 script全部代码，setTimeout，setIntervel，I/O操作，UI渲染</p>
+<p>同一次事件循环中 微任务永远在宏任务之前执行 因为宏任务队列执行时间较长 所以微任务优于宏任务队列</p>
+<h2 id="为什么js设计为单线程"><a href="#为什么js设计为单线程" class="headerlink" title="为什么js设计为单线程"></a>为什么js设计为单线程</h2><p>浏览器中需要进行各种各样的DOM操作</p>
+<p>如果设计为多线程，两个线程同时对DOM进行不一样的操作的时候，那应该如何处理？所以选择只用一个线程来执行代码，保证程序执行的一致性。</p>
+<p>web workers 可以让js成为一门多线程语言</p>
+<p>但是所有新线程都受到主线程完全控制，不能独立执行，线程实际上应属于主线程的子线程，子线程没有执行I/O操作的操作权限，只能为主线程分担一些诸如计算等任务，严格来讲这些线程并没有完整功能，并未改变js单线程的本质。</p>
+<h2 id="输入URL到页面加载的过程"><a href="#输入URL到页面加载的过程" class="headerlink" title="输入URL到页面加载的过程"></a>输入URL到页面加载的过程</h2><h2 id="get和post区别"><a href="#get和post区别" class="headerlink" title="get和post区别"></a>get和post区别</h2><p>get在浏览器回退不会再次请求，post会再次请求</p>
+<p>get请求参数会被浏览器主动缓存，post不会除非主动设置</p>
+<p>get请求参数会被完整保留在浏览器历史记录里，post中的参数不会被保留</p>
+<p>get请求在url中传送的参数是有长度限制的受限于url长度，post没有限制</p>
+<p>get参数通过url传递，post放在request body请求体中</p>
+<p>get参数暴露在地址栏不安全，post放在报文内部更安全</p>
+<p>get产生一个tcp数据包，post产生两个</p>
+<p>get一般用于查询信息，post用于提交某种信息进行某些修改操作·</p>
+<p>get传送数据量较小，不能大于2kb，post较大一般不受限制</p>
+<p>—post发送两次请求</p>
+<p>跨域校验 options请求 服务器返回204 （表示请求执行成功但是没有数据，浏览器不用刷新页面，也不用导向新的页面）然后才会发送post请求</p>
+<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p><strong>1开头的 信息类</strong></p>
+<p>100接受的请求正在处理</p>
+<p><strong>2开头 成功</strong></p>
+<p>200 请求成功 ok</p>
+<p>202 请求但是尚未处理</p>
+<p><strong>3开头 重定向表示要完成请求需要进一步操作</strong></p>
+<p>301 永久重定向 资源已经被分配到了新URL</p>
+<p>302 临时重定向</p>
+<p>303 资源存在另一个URL，用GET方法获取</p>
+<p>304 未修改 自从上次请求后未修改过</p>
+<p><strong>4开头 客户端错误</strong></p>
+<p>400 请求错误   语法</p>
+<p>401 需要http认证</p>
+<p>403 表示访问拒绝 超出访问权限</p>
+<p>404 服务器找不到请求的内容</p>
+<p><strong>5开头 服务器错误</strong></p>
+<p>500 服务器遇到错误 无法完成请求</p>
+<p>503 后端维护服务器</p>
+<h2 id="事件流"><a href="#事件流" class="headerlink" title="事件流"></a>事件流</h2><p>一个事件触发会在子元素和父元素之间传播，分成三个阶段</p>
+<p>目标阶段：在目标节点上触发，</p>
+<p>事件冒泡：事件会从最内层的目标元素开始发生，一直向上传播，直到document对象（文档根节点），从下向上</p>
+<p>事件捕获： 与事件冒泡相反，事件会从最外层开始发生，直到最具体的元素。 </p>
+<p> event.stopPropagation(); 可以阻止事件捕获和事件冒泡的发生 </p>
+<p> event.preventDefault();  阻止默认事件</p>
+<p><strong>事件代理</strong></p>
+<p>就是把元素的事件委托到它的父层或者更外层元素上，真正绑定事件的是外层元素，当事件响应到需要绑定的元素上时，会通过<a href="https://so.csdn.net/so/search?q=事件冒泡&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener">事件冒泡</a>机制从而触发它的外层元素的绑定事件上，然后在外层元素上去执行函数。 </p>
+<p>给外层加事件 等点击里面的具体元素的时候，都会冒泡到外层执行，</p>
+<p>绑定大量的实践，对于内存消耗是非常大，绑定到父层，执行的时候再去判断目标元素，可以减少大量的内存消耗。</p>
+<h2 id="防抖和节流"><a href="#防抖和节流" class="headerlink" title="防抖和节流"></a>防抖和节流</h2><p>防抖：触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算事件（多次执行变成最后一次执行）第一次触发事件不立即执行，给出期限值，如果这个期限值内没有在此触发，那就执行函数。期限值内如果在此触发事件，当时计时重新计时，短时间大量触发同一事件，只会执行一次。</p>
+<p>节流：高频事件触发，但在n秒内只会执行一次，节流会稀释函数的执行频率（多次执行变成每隔一段时间执行）在限定时间段，不断触发事件，（闲着无聊按住滚动条滚来滚去）希望即使不断拖放滚动条，也能在某个时间间隔给反馈，让函数执行一次，在某个时间段内暂时失效，过段时间后重新激活，短时间大量触发同一事件，执行一次后，指定时间期限不工作，直到过了这段时间。</p>
+<p>都是为了节省程序性能（防止高频函数调用），提高性能避免资源浪费</p>
+<p>进行窗口大小调整，滚动页面或输入框搜索联想词都会频繁触发事件处理函数，耗性能页面卡顿</p>
+<p>防抖：即时搜索输入过快，前一次结果出现在后一次的后面（信息有误）表单元素校验手机号邮箱用户名、部分搜索功能联想结果</p>
+<p>节流：鼠标跟随动画，scroll，resize，touchmove，mousemove等极易持续性触发事件，防止表单重复点击，提交一次，窗口调整，页面滚动，滚动加载，加载更多，搜索联想</p>
+<h2 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链"></a>原型和原型链</h2><p>每个函数都有一个prototype属性 指向函数的原型对象</p>
+<p>每个对象（引用类型）都有一个<em>_proto</em>_（隐式原型）属性</p>
+<p>引用类型的<em>_proto</em>_属性指向它的构造函数的prototype</p>
+<p>每个原型对象都有一个constructor属性 指向构造函数</p>
+<p>object.getprototype()可以获取对象的原型</p>
+<p>原型链：读取实例的属性，如果找不到就会查找与对象关联的原型中的属性，如果还查不到 因为原型也是个对象也有它自己的原型对象，就在它的<em>proto</em>中去找原型的原型，一直找到最顶层。这样的链条就构成了原型链</p>
+<p> <img src="https://img-blog.csdnimg.cn/1ccbdee4f468444dae832fb574ec733d.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl81NjUwNTg0NQ==,size_16,color_FFFFFF,t_70#pic_center" alt="img"> </p>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>将一个很大的程序文件，拆分为许多个小的文件，然后将多个小文件组合起来</p>
+<p>  ①阻止命名冲突； ② 代码复用； ③ 高维护性 </p>
+<p><strong>commonJS</strong></p>
+<p>暴露模块用module.exports=value  、export.xxx=value</p>
+<p>引入模块require(xxx) 第三方模块-&gt;模块名    自定义模块-&gt;模块路径</p>
+<p>AMD、CMD。。。。</p>
+<p>es6在语言标准上实现了模块功能，思想是尽量静态化，使得编辑时就能确定模块的依赖关系，以及输入输出变量，commonjs和amd都只能在运行时确定。</p>
+<p>export分别暴露  引入时需要用对象来引入</p>
+<p>统一暴露 export{xxx，xxx}</p>
+<p>默认暴露 export default </p>
+<p>CommonJS规范主要用于服务端编程，加载模块是同步的，这并不适合在浏览器环境，因为同步意味着阻塞加载，浏览器资源是异步加载的，因此有了AMD、CMD解决方案。</p>
+<h2 id="generator函数"><a href="#generator函数" class="headerlink" title="generator函数"></a>generator函数</h2><p>语法上，Generator 函数是一个状态机，封装了多个内部状态。<br>形式上，Generator是一个函数。不同于普通函数，是可以暂停执行的，所以函数名之前要加星号，以示区别。<br>整个Generator函数就是一个封装的异步任务，或者说是异步任务的容器，异步操作需要暂停的地方，都用yield语句。</p>
+<ol>
+<li>function 关键字和函数之间有一个星号(*),且内部使用yield表达式，定义不同的内部状态。</li>
+<li><p>调用Generator函数后，该函数并不执行，返回的也不是函数运行结果，而是一个指向内部状态的指针对象。</p>
+<p>下一步，必须调用遍历器对象的next方法，使得指针移向下一个状态。即：每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield表达式（或return语句）为止。 </p>
+<p>Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行。 </p>
+</li>
+</ol>
+<h2 id="vue基本原理"><a href="#vue基本原理" class="headerlink" title="vue基本原理"></a>vue基本原理</h2><p>当 一 个 Vue 实 例 创 建 时 ， Vue 会 遍 历 data 中 的 属 性 ， 用 Object.defineProperty （ vue3.0 使 用 proxy ） 将 它 们 转 为 getter/setter，并且在内部追踪相关依赖，在属性被访问和修改时 通知变化。 每个组件实例都有相应的 watcher 程序实例，它会在组 件渲染的过程中把属性记录为依赖，之后当依赖项的 setter 被调用 时，会通知 watcher 重新计算，从而致使它关联的组件得以更新</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2022/09/11/nodejs/" rel="next" title="nodejs">
+                  <i class="fa fa-chevron-left"></i> nodejs
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#整理"><span class="nav-number">1.</span> <span class="nav-text">整理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tcp与udp的区别"><span class="nav-number">1.1.</span> <span class="nav-text">tcp与udp的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for-in-—–-for-of"><span class="nav-number">1.2.</span> <span class="nav-text">for in —– for of</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#foreach-—–map"><span class="nav-number">1.3.</span> <span class="nav-text">foreach —–map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深浅拷贝"><span class="nav-number">1.4.</span> <span class="nav-text">深浅拷贝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组去重"><span class="nav-number">1.5.</span> <span class="nav-text">数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.6.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾回收"><span class="nav-number">1.7.</span> <span class="nav-text">垃圾回收</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存泄露"><span class="nav-number">1.7.1.</span> <span class="nav-text">内存泄露</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.8.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this指向"><span class="nav-number">1.9.</span> <span class="nav-text">this指向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eventLoop"><span class="nav-number">1.10.</span> <span class="nav-text">eventLoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么js设计为单线程"><span class="nav-number">1.11.</span> <span class="nav-text">为什么js设计为单线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入URL到页面加载的过程"><span class="nav-number">1.12.</span> <span class="nav-text">输入URL到页面加载的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get和post区别"><span class="nav-number">1.13.</span> <span class="nav-text">get和post区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">1.14.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件流"><span class="nav-number">1.15.</span> <span class="nav-text">事件流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防抖和节流"><span class="nav-number">1.16.</span> <span class="nav-text">防抖和节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型和原型链"><span class="nav-number">1.17.</span> <span class="nav-text">原型和原型链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化"><span class="nav-number">1.18.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#generator函数"><span class="nav-number">1.19.</span> <span class="nav-text">generator函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue基本原理"><span class="nav-number">1.20.</span> <span class="nav-text">vue基本原理</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="WayneLee"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">WayneLee</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/waynelee7" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;waynelee7" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail &amp;rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WayneLee</span>
+</div>
+  <!--<div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0
+  </div>
+  -->
+<!--
+  <span class="post-meta-divider">|</span>
+-->
+  <!-- <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.5.0
+  </div> 
+  -->
+<!-- 在网页底部添加网站运行时间 -->
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("10/11/2018 00:00:00");//
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "网站已运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":250,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
